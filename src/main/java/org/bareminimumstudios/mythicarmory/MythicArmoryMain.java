@@ -2,6 +2,7 @@ package org.bareminimumstudios.mythicarmory;
 
 import net.fabricmc.api.ModInitializer;
 
+import org.bareminimumstudios.mythicarmory.registry.ItemRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,6 +12,8 @@ public class MythicArmoryMain implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ItemRegistry.registerItems();
+
 		LOGGER.info("ALBOE! Mythic Armory initialised successfully.");
 	}
 }
