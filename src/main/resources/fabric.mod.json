@@ -1,29 +1,29 @@
 {
 	"schemaVersion": 1,
-	"id": "alboe-mythic-armory",
+	"id": "alboe-mythicarmory",
 	"version": "${version}",
 	"name": "ALBOE! Mythic Armory",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A Minecraft Mod which adds weapons for the ALBOE modpack.",
 	"authors": [
-		"Me!"
+		"RosemaryThyme"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/alboe-mythic-armory/icon.png",
+	"icon": "assets/alboe-mythicarmory/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.bareminimumstudios.mythic_armory.MythicArmoryMain"
+			"net.bareminimumstudios.mythicarmory.MythicArmoryMain"
 		],
 		"fabric-datagen": [
-			"net.bareminimumstudios.mythic_armory.MythicArmoryDataGenerator"
+			"net.bareminimumstudios.mythicarmory.MythicArmoryDataGenerator"
 		]
 	},
 	"mixins": [
-		"alboe-mythic-armory.mixins.json"
+		"alboe-mythicarmory.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.10",
@@ -32,6 +32,5 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
 	}
 }
