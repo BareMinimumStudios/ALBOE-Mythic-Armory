@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.bareminimumstudios.mythicarmory.MythicArmoryMain"
+			"org.bareminimumstudios.mythicarmory.MythicArmoryMain"
 		],
 		"fabric-datagen": [
-			"net.bareminimumstudios.mythicarmory.MythicArmoryDataGenerator"
+			"org.bareminimumstudios.mythicarmory.MythicArmoryDataGenerator"
 		]
 	},
 	"mixins": [

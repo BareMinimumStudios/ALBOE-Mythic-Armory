@@ -1,4 +1,4 @@
-package net.bareminimumstudios.mythicarmory;
+package org.bareminimumstudios.mythicarmory;
 
 import net.fabricmc.api.ModInitializer;
 
