@@ -10,13 +10,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
-import org.bareminimumstudios.mythicarmory.item.DivineSwordItem;
+import org.bareminimumstudios.mythicarmory.item.SolarisEdgeItem;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 
 public class ItemRegistry {
 
     // Divine Weapons
-    public static final Item SOLARIS_EDGE = register("solaris_edge", new DivineSwordItem(
+    public static final Item SOLARIS_EDGE = register("solaris_edge", new SolarisEdgeItem(
             100,
             -2f,
             new Item.Settings()
