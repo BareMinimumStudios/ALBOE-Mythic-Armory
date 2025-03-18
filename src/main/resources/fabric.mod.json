@@ -19,6 +19,9 @@
 		],
 		"fabric-datagen": [
 			"org.bareminimumstudios.mythicarmory.MythicArmoryDataGenerator"
+		],
+		"client": [
+			"org.bareminimumstudios.mythicarmory.MythicArmoryClient"
 		]
 	},
 	"mixins": [

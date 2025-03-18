@@ -3,6 +3,26 @@
   "textures": {
     "layer0": "alboe_mythicarmory:item/solaris_edge/solaris_edge_night"
   },
+  "overrides": [
+    {
+      "predicate": {
+        "alboe_mythicarmory:form": 0
+      },
+      "model": "alboe_mythicarmory:item/solaris_edge"
+    },
+    {
+      "predicate": {
+        "alboe_mythicarmory:form": 0.5
+      },
+      "model": "alboe_mythicarmory:item/solaris_edge_day"
+    },
+    {
+      "predicate": {
+        "alboe_mythicarmory:form": 1
+      },
+      "model": "alboe_mythicarmory:item/solaris_edge_powered"
+    }
+  ],
   "display": {
     "thirdperson_righthand": {
       "rotation": [ 0, -90, 55 ],
