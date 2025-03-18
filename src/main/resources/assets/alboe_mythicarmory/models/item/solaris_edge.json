@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "alboe_mythicarmory:item/solaris_edge_night"
+    "layer0": "alboe_mythicarmory:item/solaris_edge/solaris_edge_night"
   },
   "display": {
     "thirdperson_righthand": {

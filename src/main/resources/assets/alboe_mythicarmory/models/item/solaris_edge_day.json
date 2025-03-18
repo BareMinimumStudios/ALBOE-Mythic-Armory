@@ -1,0 +1,7 @@
+{
+  "parent": "alboe_mythicarmory:item/solaris_edge",
+  "textures": {
+    "layer0": "alboe_mythicarmory:item/solaris_edge/solaris_edge_day",
+    "layer1": "alboe_mythicarmory:item/solaris_edge/solaris_edge_day_star"
+  }
+}
