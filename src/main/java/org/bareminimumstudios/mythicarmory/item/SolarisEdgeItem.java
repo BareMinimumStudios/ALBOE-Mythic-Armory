@@ -2,8 +2,12 @@ package org.bareminimumstudios.mythicarmory.item;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleType;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.world.World;
+import net.spell_engine.particle.Particles;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
+import org.bareminimumstudios.mythicarmory.util.ParticleHelper;
 
 import java.util.Objects;
 
@@ -27,13 +31,35 @@ public class SolarisEdgeItem extends DivineSwordItem {
         return Form.get(stack.getOrCreateNbt().getString(formNbt));
     }
 
-    public static void empower(World world, ItemStack stack) {
+    public static void empower(World world, Entity entity, ItemStack stack) {
         setForm(stack, Form.EMPOWERED);
 
-        // To add particle effect
+        ParticleHelper.spawnHorizontalBurst(
+                world,
+                Particles.flame_medium_b.particleType,
+                entity.getX(), entity.getY(), entity.getZ(),
+                0, 360,
+                0.25f, 0.1f,
+                1, 1);
+
+        ParticleHelper.spawnHorizontalBurst(
+                world,
+                Particles.flame_medium_a.particleType,
+                entity.getX(), entity.getY(), entity.getZ(),
+                2.5f, 360,
+                0.15f, 0.05f,
+                1, 1);
+
+        ParticleHelper.spawnHorizontalBurst(
+                world,
+                Particles.flame_medium_a.particleType,
+                entity.getX(), entity.getY(), entity.getZ(),
+                0, 360,
+                0.1f, 0.01f,
+                1, 1);
     }
 
-    public static void depower(World world, ItemStack stack) {
+    public static void depower(World world, Entity entity, ItemStack stack) {
         setForm(stack, world.isDay() ? Form.DAY : Form.NIGHT);
         ticksInSun = 0;
 
@@ -54,12 +80,12 @@ public class SolarisEdgeItem extends DivineSwordItem {
             ticksInSun = Math.min(ticksInSun+1, 400);
 
             if(isForm(stack, Form.DAY) && ticksInSun > 300) {
-                empower(world, stack);
+                empower(world, entity, stack);
             }
         } else {
             ticksInSun = Math.max(ticksInSun-1, 0);
             if(ticksInSun <= 300) {
-                depower(world, stack);
+                depower(world, entity, stack);
             }
         }
     }
