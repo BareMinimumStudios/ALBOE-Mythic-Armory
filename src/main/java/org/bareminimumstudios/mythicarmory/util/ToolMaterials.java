@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum ToolMaterials implements ToolMaterial {
-    DIVINE(4, 3270, 15f, 5f, 30, new Identifier("air"));
+    DIVINE(4, 3270, 15f, 5f, 30, HelperMethods.identifierOf("divinity_shrapnel"));
 
 
     private final int miningLevel;

@@ -1,4 +1,11 @@
 {
   "itemGroup.alboe_mythicarmory.name": "ALBOE! Mythic Armory",
+
+  "item.alboe_mythicarmory.divinity_shrapnel": "Divinity Shrapnel",
+  "item.alboe_mythicarmory.divinity_shrapnel.tooltip1": "Used to upgrade Divine Weapons, or",
+  "item.alboe_mythicarmory.divinity_shrapnel.tooltip2": "make crafted weapons feel anew.",
+  "item.alboe_mythicarmory.divinity_shrapnel.tooltip3": "The weapons we fight with... Are not the",
+  "item.alboe_mythicarmory.divinity_shrapnel.tooltip4": "weapons of this world...",
+
   "item.alboe_mythicarmory.solaris_edge": "Solaris Edge"
 }

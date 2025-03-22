@@ -20,6 +20,9 @@ public class SolarisEdgeItem extends DivineSwordItem {
     }
 
     public static void setForm(ItemStack stack, Form form) {
+        // Do not set if the stack is already this form.
+        if(isForm(stack, form)) return;
+
         stack.getOrCreateNbt().putString(formNbt, form.getStringValue());
     }
 
@@ -84,7 +87,7 @@ public class SolarisEdgeItem extends DivineSwordItem {
             }
         } else {
             ticksInSun = Math.max(ticksInSun-1, 0);
-            if(ticksInSun <= 300) {
+            if(world.isNight() || ticksInSun <= 300) {
                 depower(world, entity, stack);
             }
         }
