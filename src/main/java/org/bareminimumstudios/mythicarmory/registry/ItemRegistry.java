@@ -33,7 +33,7 @@ public class ItemRegistry {
     // Item Group
     public static final RegistryKey<ItemGroup> KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), HelperMethods.identifierOf("main"));
     public static final ItemGroup ITEM_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(SOLARIS_EDGE))
+            .icon(() -> new ItemStack(DIVINITY_SHRAPNEL))
             .displayName(Text.translatable("itemGroup.alboe_mythicarmory.name"))
             .build();
 

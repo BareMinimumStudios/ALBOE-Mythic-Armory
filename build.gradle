@@ -35,9 +35,12 @@ dependencies {
 
 	modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}")
 	modImplementation("maven.modrinth:trinkets:${project.trinkets_version}")
-	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
+
+	modImplementation("io.wispforest:owo-lib:${project.owo_version}")
+	annotationProcessor("io.wispforest:owo-lib:${project.owo_version}")
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
 }
+
 
 processResources {
 	inputs.property "version", project.version
@@ -57,6 +60,9 @@ java {
 	sourceCompatibility = JavaVersion.VERSION_17
 	targetCompatibility = JavaVersion.VERSION_17
 }
+
+sourceSets.main.java.srcDirs += [ file("build/generated/sources/annotationProcessor/java/main") ]
+compileJava.options.generatedSourceOutputDirectory = file("${projectDir}/src/main/generatedJava/org/bareminimumstudios/mythicarmory/config")
 
 jar {
 	inputs.property "archivesName", project.base.archivesName

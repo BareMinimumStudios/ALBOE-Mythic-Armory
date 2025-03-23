@@ -7,5 +7,22 @@
   "item.alboe_mythicarmory.divinity_shrapnel.tooltip3": "The weapons we fight with... Are not the",
   "item.alboe_mythicarmory.divinity_shrapnel.tooltip4": "weapons of this world...",
 
-  "item.alboe_mythicarmory.solaris_edge": "Solaris Edge"
+  "item.alboe_mythicarmory.solaris_edge": "Solaris Edge",
+  "item.alboe_mythicarmory.solaris_edge.tooltip1": "Divine Passive: Horizon Shift",
+  "item.alboe_mythicarmory.solaris_edge.tooltip44": "which travels %s blocks, deals damage and",
+  "item.alboe_mythicarmory.solaris_edge.tooltip2": "During the day, your blade glows brighter, and gains %s%% bonus damage",
+  "item.alboe_mythicarmory.solaris_edge.tooltip3": "and regens %sHP every %ss. At night, it gets %s%% weaker and loses this effect.",
+  "item.alboe_mythicarmory.solaris_edge.tooltip4": "During the night, your blade shifts to be more defensive.",
+  "item.alboe_mythicarmory.solaris_edge.tooltip5": "Gain %s%% damage resistance and regen %sHP every %ss.",
+  "item.alboe_mythicarmory.solaris_edge.tooltip6": "Divine Ability: Eclipse Invocation",
+  "item.alboe_mythicarmory.solaris_edge.tooltip7": "Right-click to launch a solar flare in a wide arc,",
+  "item.alboe_mythicarmory.solaris_edge.tooltip8": "blinding all enemies for 3s, and dealing fire DoT for 5s.",
+  "item.alboe_mythicarmory.solaris_edge.tooltip9": "This ability is lost at night and uses up the meter if fully charged.",
+  "item.alboe_mythicarmory.solaris_edge.tooltip10": "At night, Right-click to create an eclipse shield",
+  "item.alboe_mythicarmory.solaris_edge.tooltip11": "composed of lunar energy, absorbing 50% of incoming damage",
+  "item.alboe_mythicarmory.solaris_edge.tooltip12": "in front for 5s. Reflect 15% of blocked damage to enemies",
+  "item.alboe_mythicarmory.solaris_edge.tooltip13": "in a 5-block AoE. Causes Blindness/Darkness.",
+  "item.alboe_mythicarmory.solaris_edge.tooltip14": "Bonus Effect: Solar Overload",
+  "item.alboe_mythicarmory.solaris_edge.tooltip15": "Have a meter that charges with sunlight for %ss.",
+  "item.alboe_mythicarmory.solaris_edge.tooltip16": "Empowers daytime right-click with increased range and explosive damage."
 }

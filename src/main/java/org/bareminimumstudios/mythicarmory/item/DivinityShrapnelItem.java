@@ -18,7 +18,7 @@ public class DivinityShrapnelItem extends Item {
     @Override
     public Text getName(ItemStack stack) {
         return Text.translatable(this.getTranslationKey(stack))
-                .setStyle(Styles.DIVINE.get());
+                .setStyle(Styles.DIVINE_NAME.get());
     }
 
     @Override
