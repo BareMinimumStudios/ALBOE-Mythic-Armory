@@ -18,6 +18,14 @@ repositories {
 			includeGroup 'maven.modrinth'
 		}
 	}
+	maven {
+		name = "Ladysnake Libs"
+		url = "https://maven.ladysnake.org/releases"
+	}
+	maven {
+		name = "TerraformersMC"
+		url = "https://maven.terraformersmc.com/"
+	}
 	maven { url 'https://maven.wispforest.io/releases/' }
 }
 
@@ -34,7 +42,6 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}")
-	modImplementation("maven.modrinth:trinkets:${project.trinkets_version}")
 
 	modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	annotationProcessor("io.wispforest:owo-lib:${project.owo_version}")
