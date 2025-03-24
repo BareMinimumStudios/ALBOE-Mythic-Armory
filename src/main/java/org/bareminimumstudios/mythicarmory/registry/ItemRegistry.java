@@ -10,6 +10,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.Rarity;
+import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.item.DivinityShrapnelItem;
 import org.bareminimumstudios.mythicarmory.item.SolarisEdgeItem;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
@@ -23,11 +24,11 @@ public class ItemRegistry {
 
     // Divine Weapons
     public static final Item SOLARIS_EDGE = register("solaris_edge", new SolarisEdgeItem(
-            100,
-            -2f,
+            // Damage starts at 6 and then adds this number. We minus 6 to account for this, making it easier for the end user to configure.
+            MythicArmoryMain.WEAPONS_CONFIG.solarisEdgeDamage() - 6,
+            // Attack speed starts at 4, and then adds this number. We minus 4 to account for this too.
+            MythicArmoryMain.WEAPONS_CONFIG.solarisEdgeSwingSpeed() - 4.0f,
             new Item.Settings()
-                    .rarity(Rarity.EPIC)
-                    .fireproof()
     ));
 
     // Item Group
@@ -37,7 +38,7 @@ public class ItemRegistry {
             .displayName(Text.translatable("itemGroup.alboe_mythicarmory.name"))
             .build();
 
-    public static void registerItems() {
+    public static void register() {
         Registry.register(Registries.ITEM_GROUP, KEY, ITEM_GROUP);
 
         ItemGroupEvents.modifyEntriesEvent(KEY).register(

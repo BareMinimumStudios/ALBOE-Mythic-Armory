@@ -5,16 +5,19 @@ import com.google.common.collect.Multimap;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleType;
-import net.minecraft.particle.ParticleTypes;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import net.spell_engine.particle.Particles;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
+import org.bareminimumstudios.mythicarmory.effect.TimerEffect;
+import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 import org.bareminimumstudios.mythicarmory.util.ParticleHelper;
 import org.bareminimumstudios.mythicarmory.util.Styles;
@@ -26,7 +29,6 @@ import java.util.UUID;
 
 public class SolarisEdgeItem extends DivineSwordItem {
     public static String formNbt = HelperMethods.identifierOf("form").toString();
-    public static String sunStateNbt = HelperMethods.identifierOf("sun_state").toString();
 
     public SolarisEdgeItem(int attackDamage, float attackSpeed, Settings settings) {
         super(attackDamage, attackSpeed, settings);
@@ -59,8 +61,7 @@ public class SolarisEdgeItem extends DivineSwordItem {
         return slot == EquipmentSlot.MAINHAND ? builder.build() : attributes;
     }
 
-    public static void setForm(World world, boolean serverOnly, ItemStack stack, Form form) {
-        if(serverOnly && world.isClient()) return;
+    public static void setForm(ItemStack stack, Form form) {
 
         // Do not set if the stack is already this form, or if running on the client.
         if(isForm(stack, form)) return;
@@ -76,64 +77,83 @@ public class SolarisEdgeItem extends DivineSwordItem {
         return Form.get(stack.getOrCreateNbt().getString(formNbt));
     }
 
-    public static void empower(World world, Entity entity, ItemStack stack) {
-        setForm(world, true, stack, Form.EMPOWERED);
+    public static void empower(World world, Entity entity, ItemStack stack, boolean showParticles) {
+        if(!world.isClient()) {
+            setForm(stack, Form.EMPOWERED);
+        }
 
-        ParticleHelper.spawnHorizontalBurst(
-                world,
-                Particles.flame_medium_b.particleType,
-                entity.getX(), entity.getY(), entity.getZ(),
-                0, 360,
-                0.25f, 0.1f,
-                1, 1);
+        if(showParticles) {
+            ParticleHelper.spawnHorizontalBurst(
+                    world,
+                    Particles.flame_medium_b.particleType,
+                    entity.getX(), entity.getY(), entity.getZ(),
+                    0, 360,
+                    0.25f, 0.1f,
+                    1, 1);
 
-        ParticleHelper.spawnHorizontalBurst(
-                world,
-                Particles.flame_medium_a.particleType,
-                entity.getX(), entity.getY(), entity.getZ(),
-                2.5f, 360,
-                0.15f, 0.05f,
-                1, 1);
+            ParticleHelper.spawnHorizontalBurst(
+                    world,
+                    Particles.flame_medium_a.particleType,
+                    entity.getX(), entity.getY(), entity.getZ(),
+                    2.5f, 360,
+                    0.15f, 0.05f,
+                    1, 1);
 
-        ParticleHelper.spawnHorizontalBurst(
-                world,
-                Particles.flame_medium_a.particleType,
-                entity.getX(), entity.getY(), entity.getZ(),
-                0, 360,
-                0.1f, 0.01f,
-                1, 1);
+            ParticleHelper.spawnHorizontalBurst(
+                    world,
+                    Particles.flame_medium_a.particleType,
+                    entity.getX(), entity.getY(), entity.getZ(),
+                    0, 360,
+                    0.1f, 0.01f,
+                    1, 1);
+        }
     }
 
-    public static void depower(World world, Entity entity, ItemStack stack) {
-        setForm(world, true, stack, world.isDay() ? Form.DAY : Form.NIGHT);
-        stack.getOrCreateNbt().putInt(sunStateNbt, 0);
+    public static int getSunTime(LivingEntity entity) {
+        if(entity.hasStatusEffect(EffectRegistry.SOLAR_CHARGE)) {
+            return entity.getStatusEffect(EffectRegistry.SOLAR_CHARGE).getDuration();
+        }
 
-        // To add particle effect
+        return 0;
     }
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         super.inventoryTick(stack, world, entity, slot, selected);
 
+        LivingEntity livingEntity = (LivingEntity) entity;
+
+        // Empower the blade
+        if(isForm(stack, Form.DAY) && getSunTime(livingEntity) > MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge()) {
+            empower(world, entity, stack, HelperMethods.isHolding(livingEntity, stack, false));
+        }
+
+        if(world.isClient()) return;
+
         // Swap form
-        if(!isForm(stack, Form.EMPOWERED)) {
-            setForm(world, true, stack, world.isDay() ? Form.DAY : Form.NIGHT);
+        if(!isForm(stack, Form.EMPOWERED) || getSunTime(livingEntity) <= MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge()) {
+            setForm(stack, world.isDay() ? Form.DAY : Form.NIGHT);
         }
 
         // Tick empowerment
-        if(selected && world.isDay() && world.isSkyVisible(entity.getBlockPos())) {
-            stack.getOrCreateNbt().putInt(sunStateNbt, Math.min(stack.getOrCreateNbt().getInt(sunStateNbt) +1, MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksCanStore()));
+        if(HelperMethods.isHolding(livingEntity, stack, false)) {
+            if(((TimerEffect) EffectRegistry.SOLAR_CHARGE).shouldTickUpwards(livingEntity, world)) {
+                livingEntity.addStatusEffect(new StatusEffectInstance(
+                        EffectRegistry.SOLAR_CHARGE,
+                        1
+                ));
+            }
+        }
 
-            if(isForm(stack, Form.DAY) && stack.getOrCreateNbt().getInt(sunStateNbt) > MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge()) {
-                empower(world, entity, stack);
-            }
-        } else {
-            stack.getOrCreateNbt().putInt(sunStateNbt, Math.max(stack.getOrCreateNbt().getInt(sunStateNbt)-1, 0));
-            if(isForm(stack, Form.EMPOWERED)) {
-                if (stack.getOrCreateNbt().getInt(sunStateNbt) <= MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge()) {
-                    depower(world, entity, stack);
-                }
-            }
+        // Regenerate Health
+        if (world.getTime() % MythicArmoryMain.WEAPONS_CONFIG.horizonShift.regenInterval() == 0 &&
+                HelperMethods.isHolding(livingEntity, stack, false)) {
+
+            float regenAmount = world.isDay()
+                    ? MythicArmoryMain.WEAPONS_CONFIG.horizonShift.dayRegenAmount()
+                    : MythicArmoryMain.WEAPONS_CONFIG.horizonShift.nightRegenAmount();
+
+            livingEntity.heal(regenAmount);
         }
     }
 

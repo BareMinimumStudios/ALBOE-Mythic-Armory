@@ -1,5 +1,7 @@
 package org.bareminimumstudios.mythicarmory.config;
 
+import io.wispforest.owo.config.annotation.RestartRequired;
+
 public class SolarisEdgeConfig {
     public static class HorizonShift {
         public float dayExtraDamage = 0.25f;
@@ -12,6 +14,9 @@ public class SolarisEdgeConfig {
 
     public static class SolarOverload {
         public int ticksToCharge = 300;
+        @RestartRequired
         public int ticksCanStore = 400;
+        @RestartRequired
+        public int cooldown = 300;
     }
 }

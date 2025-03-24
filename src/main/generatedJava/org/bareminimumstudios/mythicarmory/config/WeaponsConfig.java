@@ -14,6 +14,8 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
     public final Keys keys = new Keys();
 
     private final Option<java.lang.Boolean> solarisEdgeEnabled = this.optionForKey(this.keys.solarisEdgeEnabled);
+    private final Option<java.lang.Integer> solarisEdgeDamage = this.optionForKey(this.keys.solarisEdgeDamage);
+    private final Option<java.lang.Float> solarisEdgeSwingSpeed = this.optionForKey(this.keys.solarisEdgeSwingSpeed);
     private final Option<java.lang.Float> horizonShift_dayExtraDamage = this.optionForKey(this.keys.horizonShift_dayExtraDamage);
     private final Option<java.lang.Float> horizonShift_nightDealtDamageReduction = this.optionForKey(this.keys.horizonShift_nightDealtDamageReduction);
     private final Option<java.lang.Float> horizonShift_nightTakenDamageReduction = this.optionForKey(this.keys.horizonShift_nightTakenDamageReduction);
@@ -22,6 +24,7 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
     private final Option<java.lang.Float> horizonShift_nightRegenAmount = this.optionForKey(this.keys.horizonShift_nightRegenAmount);
     private final Option<java.lang.Integer> solarOverload_ticksToCharge = this.optionForKey(this.keys.solarOverload_ticksToCharge);
     private final Option<java.lang.Integer> solarOverload_ticksCanStore = this.optionForKey(this.keys.solarOverload_ticksCanStore);
+    private final Option<java.lang.Integer> solarOverload_cooldown = this.optionForKey(this.keys.solarOverload_cooldown);
 
     private WeaponsConfig() {
         super(org.bareminimumstudios.mythicarmory.config.ConfigModel.class);
@@ -49,6 +52,22 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
 
     public void solarisEdgeEnabled(boolean value) {
         solarisEdgeEnabled.set(value);
+    }
+
+    public int solarisEdgeDamage() {
+        return solarisEdgeDamage.value();
+    }
+
+    public void solarisEdgeDamage(int value) {
+        solarisEdgeDamage.set(value);
+    }
+
+    public float solarisEdgeSwingSpeed() {
+        return solarisEdgeSwingSpeed.value();
+    }
+
+    public void solarisEdgeSwingSpeed(float value) {
+        solarisEdgeSwingSpeed.set(value);
     }
 
     public final HorizonShift_ horizonShift = new HorizonShift_();
@@ -120,6 +139,14 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
             solarOverload_ticksCanStore.set(value);
         }
 
+        public int cooldown() {
+            return solarOverload_cooldown.value();
+        }
+
+        public void cooldown(int value) {
+            solarOverload_cooldown.set(value);
+        }
+
     }
     public interface HorizonShift {
         float dayExtraDamage();
@@ -140,9 +167,13 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         void ticksToCharge(int value);
         int ticksCanStore();
         void ticksCanStore(int value);
+        int cooldown();
+        void cooldown(int value);
     }
     public static class Keys {
         public final Option.Key solarisEdgeEnabled = new Option.Key("solarisEdgeEnabled");
+        public final Option.Key solarisEdgeDamage = new Option.Key("solarisEdgeDamage");
+        public final Option.Key solarisEdgeSwingSpeed = new Option.Key("solarisEdgeSwingSpeed");
         public final Option.Key horizonShift_dayExtraDamage = new Option.Key("horizonShift.dayExtraDamage");
         public final Option.Key horizonShift_nightDealtDamageReduction = new Option.Key("horizonShift.nightDealtDamageReduction");
         public final Option.Key horizonShift_nightTakenDamageReduction = new Option.Key("horizonShift.nightTakenDamageReduction");
@@ -151,6 +182,7 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         public final Option.Key horizonShift_nightRegenAmount = new Option.Key("horizonShift.nightRegenAmount");
         public final Option.Key solarOverload_ticksToCharge = new Option.Key("solarOverload.ticksToCharge");
         public final Option.Key solarOverload_ticksCanStore = new Option.Key("solarOverload.ticksCanStore");
+        public final Option.Key solarOverload_cooldown = new Option.Key("solarOverload.cooldown");
     }
 }
 

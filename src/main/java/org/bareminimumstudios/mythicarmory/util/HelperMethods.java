@@ -1,5 +1,8 @@
 package org.bareminimumstudios.mythicarmory.util;
 
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
@@ -50,5 +53,28 @@ public class HelperMethods {
     public static String decimalToPercentage(float decimal) {
         float percentage = decimal * 100;
         return new DecimalFormat("#.##").format(percentage);
+    }
+
+    /**
+     * Checks whether an entity is holding an item in one of their hands. If an item is two-handed, only checks if it is held in the Main Hand
+     * @param entity The entity being tested.
+     * @param item The item to check whether the entity is holding.
+     * @param isTwoHanded Whether the item is one-handed (and CAN be held in the offhand) or is two-handed and cannot.
+     * @return True if the entity is holding the item.
+     */
+    public static boolean isHolding(LivingEntity entity, Item item, boolean isTwoHanded) {
+        return isTwoHanded ? entity.getMainHandStack().getItem() == item : entity.isHolding(item);
+    }
+
+    /**
+     * Similar to the other <code>isHolding</code> method, except this one checks for an exact itemStack instead.
+     * @param entity The entity being tested.
+     * @param itemStack The exact itemStack to check whether the entity is holding.
+     * @param isTwoHanded Whether the item is one-handed (and CAN be held in the offhand) or is two-handed and cannot.
+     * @return True if the entity is holding the exact itemStack.
+     */
+    public static boolean isHolding(LivingEntity entity, ItemStack itemStack, boolean isTwoHanded) {
+        if(entity.getMainHandStack().equals(itemStack)) return true;
+        return !isTwoHanded && entity.getOffHandStack().equals(itemStack);
     }
 }
