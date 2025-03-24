@@ -6,12 +6,9 @@ import io.wispforest.owo.config.annotation.*;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 
 @Sync(Option.SyncMode.OVERRIDE_CLIENT)
-@Modmenu(modId = MythicArmoryMain.MOD_ID)
 @Config(name = "alboe_mythicarmory/weapons", wrapperName = "WeaponsConfig")
-public class ConfigModel {
-    @SectionHeader("Solaris Edge")
-    @RestartRequired
-    public boolean solarisEdgeEnabled = true;
+public class WeaponConfigModel {
+    @SectionHeader("solarisEdge")
     @RestartRequired
     public int solarisEdgeDamage = 25;
     @RestartRequired

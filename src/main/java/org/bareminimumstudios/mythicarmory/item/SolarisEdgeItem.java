@@ -12,7 +12,10 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.NbtString;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.spell_engine.particle.Particles;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
@@ -29,6 +32,8 @@ import java.util.UUID;
 
 public class SolarisEdgeItem extends DivineSwordItem {
     public static String formNbt = HelperMethods.identifierOf("form").toString();
+    public static String spellContainerNbt = "spell_container";
+    public static String spellIdsNbt = "spell_ids";
 
     public SolarisEdgeItem(int attackDamage, float attackSpeed, Settings settings) {
         super(attackDamage, attackSpeed, settings);
@@ -62,11 +67,15 @@ public class SolarisEdgeItem extends DivineSwordItem {
     }
 
     public static void setForm(ItemStack stack, Form form) {
-
-        // Do not set if the stack is already this form, or if running on the client.
         if(isForm(stack, form)) return;
 
         stack.getOrCreateNbt().putString(formNbt, form.getStringValue());
+
+        NbtList list = new NbtList();
+        list.add(NbtString.of(form.getSpellId()));
+        NbtCompound wrapper = new NbtCompound();
+        wrapper.put(spellIdsNbt, list);
+        stack.getOrCreateNbt().put(spellContainerNbt, wrapper);
     }
 
     public static boolean isForm(ItemStack stack, Form form) {
@@ -145,6 +154,8 @@ public class SolarisEdgeItem extends DivineSwordItem {
             }
         }
 
+        if(!world.isDay()) livingEntity.removeStatusEffect(EffectRegistry.SOLAR_CHARGE);
+
         // Regenerate Health
         if (world.getTime() % MythicArmoryMain.WEAPONS_CONFIG.horizonShift.regenInterval() == 0 &&
                 HelperMethods.isHolding(livingEntity, stack, false)) {
@@ -192,15 +203,19 @@ public class SolarisEdgeItem extends DivineSwordItem {
     }
 
     public enum Form {
-        NIGHT("night"),
-        DAY("day"),
-        EMPOWERED("empowered");
+        NIGHT("night", HelperMethods.identifierOf("eclipse_invocation_night")),
+        DAY("day", HelperMethods.identifierOf("eclipse_invocation_day")),
+        EMPOWERED("empowered", HelperMethods.identifierOf("eclipse_invocation_empowered"));
 
         private final String stringValue;
+        private final Identifier spell;
 
-        Form(String stringValue) {
+        Form(String stringValue, Identifier spell) {
             this.stringValue = stringValue;
+            this.spell = spell;
         }
+
+        public String getSpellId() {return spell.toString();}
 
         public String getStringValue() {
             return stringValue;

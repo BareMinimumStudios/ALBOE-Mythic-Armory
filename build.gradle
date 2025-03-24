@@ -42,6 +42,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}")
+	modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
 
 	modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	annotationProcessor("io.wispforest:owo-lib:${project.owo_version}")

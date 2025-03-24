@@ -9,11 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicarmory.config.ConfigModel> {
+public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicarmory.config.WeaponConfigModel> {
 
     public final Keys keys = new Keys();
 
-    private final Option<java.lang.Boolean> solarisEdgeEnabled = this.optionForKey(this.keys.solarisEdgeEnabled);
     private final Option<java.lang.Integer> solarisEdgeDamage = this.optionForKey(this.keys.solarisEdgeDamage);
     private final Option<java.lang.Float> solarisEdgeSwingSpeed = this.optionForKey(this.keys.solarisEdgeSwingSpeed);
     private final Option<java.lang.Float> horizonShift_dayExtraDamage = this.optionForKey(this.keys.horizonShift_dayExtraDamage);
@@ -27,11 +26,11 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
     private final Option<java.lang.Integer> solarOverload_cooldown = this.optionForKey(this.keys.solarOverload_cooldown);
 
     private WeaponsConfig() {
-        super(org.bareminimumstudios.mythicarmory.config.ConfigModel.class);
+        super(org.bareminimumstudios.mythicarmory.config.WeaponConfigModel.class);
     }
 
     private WeaponsConfig(Consumer<Jankson.Builder> janksonBuilder) {
-        super(org.bareminimumstudios.mythicarmory.config.ConfigModel.class, janksonBuilder);
+        super(org.bareminimumstudios.mythicarmory.config.WeaponConfigModel.class, janksonBuilder);
     }
 
     public static WeaponsConfig createAndLoad() {
@@ -44,14 +43,6 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         var wrapper = new WeaponsConfig(janksonBuilder);
         wrapper.load();
         return wrapper;
-    }
-
-    public boolean solarisEdgeEnabled() {
-        return solarisEdgeEnabled.value();
-    }
-
-    public void solarisEdgeEnabled(boolean value) {
-        solarisEdgeEnabled.set(value);
     }
 
     public int solarisEdgeDamage() {
@@ -171,7 +162,6 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         void cooldown(int value);
     }
     public static class Keys {
-        public final Option.Key solarisEdgeEnabled = new Option.Key("solarisEdgeEnabled");
         public final Option.Key solarisEdgeDamage = new Option.Key("solarisEdgeDamage");
         public final Option.Key solarisEdgeSwingSpeed = new Option.Key("solarisEdgeSwingSpeed");
         public final Option.Key horizonShift_dayExtraDamage = new Option.Key("horizonShift.dayExtraDamage");

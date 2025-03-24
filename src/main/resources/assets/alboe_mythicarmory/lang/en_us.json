@@ -24,5 +24,39 @@
   "item.alboe_mythicarmory.solaris_edge.tooltip13": "in a 5-block AoE. Causes Blindness/Darkness.",
   "item.alboe_mythicarmory.solaris_edge.tooltip14": "Bonus Effect: Solar Overload",
   "item.alboe_mythicarmory.solaris_edge.tooltip15": "Have a meter that charges with sunlight for %ss.",
-  "item.alboe_mythicarmory.solaris_edge.tooltip16": "Empowers daytime right-click with increased range and explosive damage."
+  "item.alboe_mythicarmory.solaris_edge.tooltip16": "Empowers daytime right-click with increased range and explosive damage.",
+
+  "text.config.alboe_mythicarmory.title": "ALBOE! Mythic Armory",
+  "text.config.alboe_mythicarmory.button.weapons": "Weapons",
+  "text.config.alboe_mythicarmory.button.loot": "Loot",
+  "text.config.alboe_mythicarmory.button.done": "Done",
+  "text.config.alboe_mythicarmory.button.close": "Close",
+
+  "text.config.alboe_mythicarmory/weapons.title": "ALBOE! Mythic Armory | Weapons",
+  "text.config.alboe_mythicarmory/weapons.section.solarisEdge": "Solaris Edge",
+  "text.config.alboe_mythicarmory/weapons.option.solarisEdgeDamage": "Melee Damage",
+  "text.config.alboe_mythicarmory/weapons.option.solarisEdgeSwingSpeed": "Melee Swing Speed",
+  "text.config.alboe_mythicarmory/weapons.category.horizonShift": "Horizon Shift Ability",
+  "text.config.alboe_mythicarmory/weapons.option.horizonShift.dayExtraDamage": "Additional Daytime Damage Modifier",
+  "text.config.alboe_mythicarmory/weapons.option.horizonShift.nightDealtDamageReduction": "Reduced Nighttime Damage Modifier",
+  "text.config.alboe_mythicarmory/weapons.option.horizonShift.nightTakenDamageReduction": "Additional Nighttime Damage Reduction Modifier",
+  "text.config.alboe_mythicarmory/weapons.option.horizonShift.regenInterval": "Ticks Between Heals",
+  "text.config.alboe_mythicarmory/weapons.option.horizonShift.dayRegenAmount": "Daytime Healing Amount",
+  "text.config.alboe_mythicarmory/weapons.option.horizonShift.nightRegenAmount": "Nighttime Healing Amount",
+  "text.config.alboe_mythicarmory/weapons.category.solarOverload": "Solar Overload Ability",
+  "text.config.alboe_mythicarmory/weapons.option.solarOverload.ticksToCharge": "Ticks to Charge Overload",
+  "text.config.alboe_mythicarmory/weapons.option.solarOverload.ticksCanStore": "Overload Meter Max Ticks",
+  "text.config.alboe_mythicarmory/weapons.option.solarOverload.cooldown": "Overload Cooldown",
+
+  "text.config.alboe_mythicarmory/loot.title": "ALBOE! Mythic Armory | Loot",
+  "text.config.alboe_mythicarmory/loot.section.enabledWeapon": "Obtainable Weapons",
+  "text.config.alboe_mythicarmory/loot.option.solarisEdgeEnabled": "Can Obtain Solaris Edge",
+  "text.config.alboe_mythicarmory/loot.section.generic": "Chest Loot",
+  "text.config.alboe_mythicarmory/loot.option.divinityShrapnelChestChance": "Divinity Shrapnel Chance in Chests",
+  "text.config.alboe_mythicarmory/loot.option.divineWeaponsChestChance": "Divine Weapons Chance in Chests",
+  "text.config.alboe_mythicarmory/loot.section.bosses": "Boss Loot",
+  "text.config.alboe_mythicarmory/loot.option.divineWeaponsBossChance": "Divine Weapons Chance from Bosses",
+  "text.config.alboe_mythicarmory/loot.option.bosses": "Boss Loot Tables",
+
+  "": ""
 }

@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "alboe-mythicarmory",
+	"id": "alboe_mythicarmory",
 	"version": "${version}",
 	"name": "ALBOE! Mythic Armory",
 	"description": "A Minecraft Mod which adds weapons for the ALBOE modpack.",
@@ -22,6 +22,9 @@
 		],
 		"client": [
 			"org.bareminimumstudios.mythicarmory.MythicArmoryClient"
+		],
+		"modmenu": [
+			"org.bareminimumstudios.mythicarmory.client.ModMenuIntegration"
 		]
 	},
 	"mixins": [
