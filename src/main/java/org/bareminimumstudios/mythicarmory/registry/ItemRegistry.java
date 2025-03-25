@@ -19,6 +19,10 @@ public class ItemRegistry {
 
     // Crafting Materials
     public static final Item DIVINITY_SHRAPNEL = register("divinity_shrapnel", new DivinityShrapnelItem(
+            new Item.Settings().fireproof()
+    ));
+
+    public static final Item LUNAR_SHIELD = register("lunar_shield", new DivinityShrapnelItem(
             new Item.Settings()
     ));
 

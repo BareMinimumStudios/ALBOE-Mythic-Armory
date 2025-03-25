@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class PlayerEntityMixin {
 
     @ModifyVariable(at = @At("HEAD"), method = "applyDamage", index = 2, argsOnly = true)
-    private float mythicarmory$modifyDamage(float amount) {
-        return MixinMethods.modifyDamage((PlayerEntity) (Object) this, amount);
+    private float mythicarmory$modifyDamage(float amount, DamageSource source) {
+        return MixinMethods.modifyDamage((PlayerEntity) (Object) this, amount, source);
     }
 }

@@ -77,4 +77,24 @@ public class HelperMethods {
         if(entity.getMainHandStack().equals(itemStack)) return true;
         return !isTwoHanded && entity.getOffHandStack().equals(itemStack);
     }
+
+    /**
+     * Interpolates a value along a sine wave, oscillating between <code>middle - bound</code> and <code>middle + bound</code>.
+     * @param progress A decimal value that determines the position along the sine wave. This value is normalized to the range [0,1).
+     *                 <ul>
+     *                   <li>At 0.00, the return value equals <code>middle</code></li>
+     *                   <li>At 0.25, the return value equals <code>middle + bound</code></li>
+     *                   <li>At 0.50, the return value equals <code>middle</code></li>
+     *                   <li>At 0.75, the return value equals <code>middle - bound</code></li>
+     *                   <li>At 1.00, the return value equals <code>middle</code></li>
+     *                 </ul>
+     * @param middle The midpoint of the sine wave.
+     * @param bound The amplitude of the sine wave.
+     * @return The interpolated value.
+     */
+    public static double sinInterpol(float progress, double middle, double bound) {
+        double normalisedValue = Math.sin(progress * 2 * Math.PI);
+
+        return middle + (normalisedValue * bound);
+    }
 }

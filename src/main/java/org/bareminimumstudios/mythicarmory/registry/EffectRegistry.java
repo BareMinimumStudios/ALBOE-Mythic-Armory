@@ -5,7 +5,9 @@ import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.spell_engine.api.effect.Synchronized;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
+import org.bareminimumstudios.mythicarmory.effect.BlankEffect;
 import org.bareminimumstudios.mythicarmory.effect.TimerEffect;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 
@@ -24,11 +26,17 @@ public class EffectRegistry {
             (entity, world) -> false,
             MythicArmoryMain.WEAPONS_CONFIG.solarOverload.cooldown()));
 
+    public static final StatusEffect LUNAR_SHIELD = register("lunar_shield", new BlankEffect(
+            StatusEffectCategory.BENEFICIAL, 14935011
+    ));
+
 
     public static StatusEffect register(String id, StatusEffect effect) {
         Registry.register(Registries.STATUS_EFFECT, HelperMethods.identifierOf(id), effect);
         return effect;
     }
 
-    public static void register() {}
+    public static void register() {
+        Synchronized.configure(LUNAR_SHIELD, true);
+    }
 }

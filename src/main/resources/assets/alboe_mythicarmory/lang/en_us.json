@@ -1,4 +1,7 @@
 {
+  "effect.alboe_mythicarmory.solar_charge": "Solar Charge",
+  "effect.alboe_mythicarmory.solar_drain": "Solar Drain",
+
   "itemGroup.alboe_mythicarmory.name": "ALBOE! Mythic Armory",
 
   "item.alboe_mythicarmory.divinity_shrapnel": "Divinity Shrapnel",
@@ -21,10 +24,19 @@
   "item.alboe_mythicarmory.solaris_edge.tooltip10": "At night, Right-click to create an eclipse shield",
   "item.alboe_mythicarmory.solaris_edge.tooltip11": "composed of lunar energy, absorbing 50% of incoming damage",
   "item.alboe_mythicarmory.solaris_edge.tooltip12": "in front for 5s. Reflect 15% of blocked damage to enemies",
-  "item.alboe_mythicarmory.solaris_edge.tooltip13": "in a 5-block AoE. Causes Blindness/Darkness.",
+  "item.alboe_mythicarmory.solaris_edge.tooltip13": "in a 5-block AoE and causes Blindness.",
   "item.alboe_mythicarmory.solaris_edge.tooltip14": "Bonus Effect: Solar Overload",
   "item.alboe_mythicarmory.solaris_edge.tooltip15": "Have a meter that charges with sunlight for %ss.",
   "item.alboe_mythicarmory.solaris_edge.tooltip16": "Empowers daytime right-click with increased range and explosive damage.",
+
+
+  "spell.alboe_mythicarmory.eclipse_invocation_day.name": "Eclipse Invocation",
+  "spell.alboe_mythicarmory.eclipse_invocation_night.name": "Eclipse Invocation",
+  "spell.alboe_mythicarmory.eclipse_invocation_empowered.name": "Eclipse Invocation",
+  "spell.alboe_mythicarmory.eclipse_invocation_day.description": "See Weapon Description",
+  "spell.alboe_mythicarmory.eclipse_invocation_night.description": "See Weapon Description",
+  "spell.alboe_mythicarmory.eclipse_invocation_empowered.description": "See Weapon Description",
+
 
   "text.config.alboe_mythicarmory.title": "ALBOE! Mythic Armory",
   "text.config.alboe_mythicarmory.button.weapons": "Weapons",
