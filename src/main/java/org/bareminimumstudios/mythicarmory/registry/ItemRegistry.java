@@ -22,10 +22,6 @@ public class ItemRegistry {
             new Item.Settings().fireproof()
     ));
 
-    public static final Item LUNAR_SHIELD = register("lunar_shield", new DivinityShrapnelItem(
-            new Item.Settings()
-    ));
-
     // Divine Weapons
     public static final Item SOLARIS_EDGE = register("solaris_edge", new SolarisEdgeItem(
             // Damage starts at 6 and then adds this number. We minus 6 to account for this, making it easier for the end user to configure.

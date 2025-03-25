@@ -62,11 +62,11 @@ public class MixinMethods {
                     enemy.addStatusEffect(
                             new StatusEffectInstance(
                                     StatusEffects.BLINDNESS,
-                                    30
+                                    50
                             )
                     );
 
-                    enemy.damage(enemy.getDamageSources().mobAttack(entity), original * 0.15f);
+                    enemy.damage(enemy.getDamageSources().magic(), original * 0.15f);
                 }
             }
         }

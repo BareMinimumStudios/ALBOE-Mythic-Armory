@@ -24,16 +24,30 @@
     },
     "animation": "spell_engine:one_handed_shout_release",
     "sound": {
-      "id": "spell_engine:bind_spell"
+      "id": "spell_engine:generic_healing_impact_1"
     }
   },
   "impact": [
     {
-      "action": {
-        "type": "FIRE",
-        "fire": {
-          "duration": 3
+      "particles": [
+        {
+          "particle_id": "spell_engine:white_spark_mini",
+          "shape": "SPHERE",
+          "origin": "CENTER",
+          "count": 150,
+          "min_speed": 0.2,
+          "max_speed": 0.7
         }
+      ],
+      "action": {
+        "type": "STATUS_EFFECT",
+        "status_effect": {
+          "effect_id": "alboe_mythicarmory:lunar_shield",
+          "duration": 6,
+          "apply_mode": "SET",
+          "show_particles": false
+        },
+        "apply_to_caster": true
       }
     }
   ],
