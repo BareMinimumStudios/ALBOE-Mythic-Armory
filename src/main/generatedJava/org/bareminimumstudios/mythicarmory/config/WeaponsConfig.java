@@ -24,6 +24,16 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
     private final Option<java.lang.Integer> solarOverload_ticksToCharge = this.optionForKey(this.keys.solarOverload_ticksToCharge);
     private final Option<java.lang.Integer> solarOverload_ticksCanStore = this.optionForKey(this.keys.solarOverload_ticksCanStore);
     private final Option<java.lang.Integer> solarOverload_cooldown = this.optionForKey(this.keys.solarOverload_cooldown);
+    private final Option<java.lang.Integer> skyThresherDamage = this.optionForKey(this.keys.skyThresherDamage);
+    private final Option<java.lang.Float> skyThresherSwingSpeed = this.optionForKey(this.keys.skyThresherSwingSpeed);
+    private final Option<java.lang.Float> zephyr_jumpHeightIncrease = this.optionForKey(this.keys.zephyr_jumpHeightIncrease);
+    private final Option<java.lang.Float> zephyr_speedIncrease = this.optionForKey(this.keys.zephyr_speedIncrease);
+    private final Option<java.lang.Integer> zephyr_slowFallTime = this.optionForKey(this.keys.zephyr_slowFallTime);
+    private final Option<java.lang.Integer> zephyr_dashCooldown = this.optionForKey(this.keys.zephyr_dashCooldown);
+    private final Option<java.lang.Float> zephyr_dashStrength = this.optionForKey(this.keys.zephyr_dashStrength);
+    private final Option<java.lang.Float> mistral_chance = this.optionForKey(this.keys.mistral_chance);
+    private final Option<java.lang.Integer> mistral_nauseaDuration = this.optionForKey(this.keys.mistral_nauseaDuration);
+    private final Option<java.lang.Float> mistral_pullStrength = this.optionForKey(this.keys.mistral_pullStrength);
 
     private WeaponsConfig() {
         super(org.bareminimumstudios.mythicarmory.config.WeaponConfigModel.class);
@@ -139,6 +149,92 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         }
 
     }
+    public int skyThresherDamage() {
+        return skyThresherDamage.value();
+    }
+
+    public void skyThresherDamage(int value) {
+        skyThresherDamage.set(value);
+    }
+
+    public float skyThresherSwingSpeed() {
+        return skyThresherSwingSpeed.value();
+    }
+
+    public void skyThresherSwingSpeed(float value) {
+        skyThresherSwingSpeed.set(value);
+    }
+
+    public final Zephyr_ zephyr = new Zephyr_();
+    public class Zephyr_ implements Zephyr {
+        public float jumpHeightIncrease() {
+            return zephyr_jumpHeightIncrease.value();
+        }
+
+        public void jumpHeightIncrease(float value) {
+            zephyr_jumpHeightIncrease.set(value);
+        }
+
+        public float speedIncrease() {
+            return zephyr_speedIncrease.value();
+        }
+
+        public void speedIncrease(float value) {
+            zephyr_speedIncrease.set(value);
+        }
+
+        public int slowFallTime() {
+            return zephyr_slowFallTime.value();
+        }
+
+        public void slowFallTime(int value) {
+            zephyr_slowFallTime.set(value);
+        }
+
+        public int dashCooldown() {
+            return zephyr_dashCooldown.value();
+        }
+
+        public void dashCooldown(int value) {
+            zephyr_dashCooldown.set(value);
+        }
+
+        public float dashStrength() {
+            return zephyr_dashStrength.value();
+        }
+
+        public void dashStrength(float value) {
+            zephyr_dashStrength.set(value);
+        }
+
+    }
+    public final Mistral_ mistral = new Mistral_();
+    public class Mistral_ implements Mistral {
+        public float chance() {
+            return mistral_chance.value();
+        }
+
+        public void chance(float value) {
+            mistral_chance.set(value);
+        }
+
+        public int nauseaDuration() {
+            return mistral_nauseaDuration.value();
+        }
+
+        public void nauseaDuration(int value) {
+            mistral_nauseaDuration.set(value);
+        }
+
+        public float pullStrength() {
+            return mistral_pullStrength.value();
+        }
+
+        public void pullStrength(float value) {
+            mistral_pullStrength.set(value);
+        }
+
+    }
     public interface HorizonShift {
         float dayExtraDamage();
         void dayExtraDamage(float value);
@@ -161,6 +257,26 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         int cooldown();
         void cooldown(int value);
     }
+    public interface Zephyr {
+        float jumpHeightIncrease();
+        void jumpHeightIncrease(float value);
+        float speedIncrease();
+        void speedIncrease(float value);
+        int slowFallTime();
+        void slowFallTime(int value);
+        int dashCooldown();
+        void dashCooldown(int value);
+        float dashStrength();
+        void dashStrength(float value);
+    }
+    public interface Mistral {
+        float chance();
+        void chance(float value);
+        int nauseaDuration();
+        void nauseaDuration(int value);
+        float pullStrength();
+        void pullStrength(float value);
+    }
     public static class Keys {
         public final Option.Key solarisEdgeDamage = new Option.Key("solarisEdgeDamage");
         public final Option.Key solarisEdgeSwingSpeed = new Option.Key("solarisEdgeSwingSpeed");
@@ -173,6 +289,16 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         public final Option.Key solarOverload_ticksToCharge = new Option.Key("solarOverload.ticksToCharge");
         public final Option.Key solarOverload_ticksCanStore = new Option.Key("solarOverload.ticksCanStore");
         public final Option.Key solarOverload_cooldown = new Option.Key("solarOverload.cooldown");
+        public final Option.Key skyThresherDamage = new Option.Key("skyThresherDamage");
+        public final Option.Key skyThresherSwingSpeed = new Option.Key("skyThresherSwingSpeed");
+        public final Option.Key zephyr_jumpHeightIncrease = new Option.Key("zephyr.jumpHeightIncrease");
+        public final Option.Key zephyr_speedIncrease = new Option.Key("zephyr.speedIncrease");
+        public final Option.Key zephyr_slowFallTime = new Option.Key("zephyr.slowFallTime");
+        public final Option.Key zephyr_dashCooldown = new Option.Key("zephyr.dashCooldown");
+        public final Option.Key zephyr_dashStrength = new Option.Key("zephyr.dashStrength");
+        public final Option.Key mistral_chance = new Option.Key("mistral.chance");
+        public final Option.Key mistral_nauseaDuration = new Option.Key("mistral.nauseaDuration");
+        public final Option.Key mistral_pullStrength = new Option.Key("mistral.pullStrength");
     }
 }
 

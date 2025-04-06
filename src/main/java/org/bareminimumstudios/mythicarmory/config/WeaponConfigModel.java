@@ -17,4 +17,14 @@ public class WeaponConfigModel {
     public SolarisEdgeConfig.HorizonShift horizonShift = new SolarisEdgeConfig.HorizonShift();
     @Nest
     public SolarisEdgeConfig.SolarOverload solarOverload = new SolarisEdgeConfig.SolarOverload();
+
+    @SectionHeader("skyThresher")
+    @RestartRequired
+    public int skyThresherDamage = 30;
+    @RestartRequired
+    public float skyThresherSwingSpeed = 0.9f;
+    @Nest
+    public SkyThresherConfig.Zephyr zephyr = new SkyThresherConfig.Zephyr();
+    @Nest
+    public SkyThresherConfig.Mistral mistral = new SkyThresherConfig.Mistral();
 }

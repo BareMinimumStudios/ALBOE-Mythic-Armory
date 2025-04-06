@@ -3,6 +3,10 @@ plugins {
 	id 'maven-publish'
 }
 
+loom {
+	accessWidenerPath = file("src/main/resources/alboe-mythicarmory.accessWidener")
+}
+
 version = project.mod_version
 group = project.maven_group
 

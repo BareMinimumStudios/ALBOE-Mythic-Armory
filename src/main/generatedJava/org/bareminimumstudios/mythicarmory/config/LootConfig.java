@@ -14,6 +14,7 @@ public class LootConfig extends ConfigWrapper<org.bareminimumstudios.mythicarmor
     public final Keys keys = new Keys();
 
     private final Option<java.lang.Boolean> solarisEdgeEnabled = this.optionForKey(this.keys.solarisEdgeEnabled);
+    private final Option<java.lang.Boolean> skyThresherEnabled = this.optionForKey(this.keys.skyThresherEnabled);
     private final Option<java.lang.Float> divinityShrapnelChestChance = this.optionForKey(this.keys.divinityShrapnelChestChance);
     private final Option<java.lang.Float> divineWeaponsChestChance = this.optionForKey(this.keys.divineWeaponsChestChance);
     private final Option<java.lang.Float> divineWeaponsBossChance = this.optionForKey(this.keys.divineWeaponsBossChance);
@@ -45,6 +46,14 @@ public class LootConfig extends ConfigWrapper<org.bareminimumstudios.mythicarmor
 
     public void solarisEdgeEnabled(boolean value) {
         solarisEdgeEnabled.set(value);
+    }
+
+    public boolean skyThresherEnabled() {
+        return skyThresherEnabled.value();
+    }
+
+    public void skyThresherEnabled(boolean value) {
+        skyThresherEnabled.set(value);
     }
 
     public float divinityShrapnelChestChance() {
@@ -82,6 +91,7 @@ public class LootConfig extends ConfigWrapper<org.bareminimumstudios.mythicarmor
 
     public static class Keys {
         public final Option.Key solarisEdgeEnabled = new Option.Key("solarisEdgeEnabled");
+        public final Option.Key skyThresherEnabled = new Option.Key("skyThresherEnabled");
         public final Option.Key divinityShrapnelChestChance = new Option.Key("divinityShrapnelChestChance");
         public final Option.Key divineWeaponsChestChance = new Option.Key("divineWeaponsChestChance");
         public final Option.Key divineWeaponsBossChance = new Option.Key("divineWeaponsBossChance");

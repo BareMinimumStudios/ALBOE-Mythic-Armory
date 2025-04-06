@@ -118,13 +118,6 @@ public class SolarisEdgeItem extends DivineSwordItem {
         }
     }
 
-    public static int getSunTime(LivingEntity entity) {
-        if(entity.hasStatusEffect(EffectRegistry.SOLAR_CHARGE)) {
-            return entity.getStatusEffect(EffectRegistry.SOLAR_CHARGE).getDuration();
-        }
-
-        return 0;
-    }
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
@@ -133,20 +126,20 @@ public class SolarisEdgeItem extends DivineSwordItem {
         LivingEntity livingEntity = (LivingEntity) entity;
 
         // Empower the blade
-        if(isForm(stack, Form.DAY) && getSunTime(livingEntity) > MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge()) {
+        if(isForm(stack, Form.DAY) && EffectRegistry.SOLAR_CHARGE.getTime(livingEntity) > MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge()) {
             empower(world, entity, stack, HelperMethods.isHolding(livingEntity, stack, false));
         }
 
         if(world.isClient()) return;
 
         // Swap form
-        if(!isForm(stack, Form.EMPOWERED) || getSunTime(livingEntity) <= MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge()) {
+        if(!isForm(stack, Form.EMPOWERED) || EffectRegistry.SOLAR_CHARGE.getTime(livingEntity) <= MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge()) {
             setForm(stack, world.isDay() ? Form.DAY : Form.NIGHT);
         }
 
         // Tick empowerment
         if(HelperMethods.isHolding(livingEntity, stack, false)) {
-            if(((TimerEffect) EffectRegistry.SOLAR_CHARGE).shouldTickUpwards(livingEntity, world)) {
+            if(EffectRegistry.SOLAR_CHARGE.shouldTickUpwards(livingEntity, world)) {
                 livingEntity.addStatusEffect(new StatusEffectInstance(
                         EffectRegistry.SOLAR_CHARGE,
                         1

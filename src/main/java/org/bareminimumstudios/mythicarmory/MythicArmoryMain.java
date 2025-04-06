@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.spell_engine.api.spell.SpellEvents;
 import org.bareminimumstudios.mythicarmory.config.LootConfig;
 import org.bareminimumstudios.mythicarmory.config.WeaponsConfig;
+import org.bareminimumstudios.mythicarmory.networking.PacketHandler;
 import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
 import org.bareminimumstudios.mythicarmory.registry.ItemRegistry;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
@@ -27,6 +28,7 @@ public class MythicArmoryMain implements ModInitializer {
 		ItemRegistry.register();
 		EffectRegistry.register();
 		LootTableModifier.register();
+		PacketHandler.registerServerReceivers();
 		initializeEventListeners();
 
 		LOGGER.info("ALBOE! Mythic Armory initialised successfully.");

@@ -8,8 +8,12 @@ import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.spell_engine.api.effect.CustomModelStatusEffect;
 import net.spell_engine.api.render.CustomModels;
+import org.bareminimumstudios.mythicarmory.client.InputHandler;
 import org.bareminimumstudios.mythicarmory.client.renderers.LunarShieldRenderer;
+import org.bareminimumstudios.mythicarmory.config.ClientConfig;
+import org.bareminimumstudios.mythicarmory.config.WeaponsConfig;
 import org.bareminimumstudios.mythicarmory.item.SolarisEdgeItem;
+import org.bareminimumstudios.mythicarmory.networking.PacketHandler;
 import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
 import org.bareminimumstudios.mythicarmory.registry.ItemRegistry;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
@@ -21,10 +25,14 @@ import java.util.List;
 @Environment(EnvType.CLIENT)
 public class MythicArmoryClient implements ClientModInitializer {
 
+	public static final ClientConfig CLIENT_CONFIG = ClientConfig.createAndLoad();
+
 	@Override
 	public void onInitializeClient() {
 		registerModelPredicates();
 		registerSpellEngineRenderers();
+		InputHandler.register();
+		PacketHandler.registerClientReceivers();
 	}
 
 	public static void registerSpellEngineRenderers() {

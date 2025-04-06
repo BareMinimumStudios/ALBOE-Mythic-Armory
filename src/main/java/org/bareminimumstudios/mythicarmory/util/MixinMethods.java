@@ -75,9 +75,9 @@ public class MixinMethods {
     }
 
     private static boolean isFromFront(LivingEntity entity, Vec3d dir) {
-        float lowerBound = normaliseAngle(entity.getYaw() - 55);
+        float lowerBound = normaliseAngle(entity.getYaw() - 90);
         float attackAngle = (float) Math.toDegrees(Math.atan2(-dir.getX(), dir.getZ()));
-        float upperBound = normaliseAngle(entity.getYaw() + 55);
+        float upperBound = normaliseAngle(entity.getYaw() + 90);
 
         boolean isFromFront;
         if (lowerBound <= upperBound) {

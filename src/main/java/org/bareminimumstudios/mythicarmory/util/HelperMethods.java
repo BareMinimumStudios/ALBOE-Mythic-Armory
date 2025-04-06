@@ -1,11 +1,14 @@
 package org.bareminimumstudios.mythicarmory.util;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
+import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 

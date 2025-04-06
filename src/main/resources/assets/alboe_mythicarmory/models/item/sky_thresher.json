@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "alboe_mythicarmory:item/sky_thresher"
+  }
+}

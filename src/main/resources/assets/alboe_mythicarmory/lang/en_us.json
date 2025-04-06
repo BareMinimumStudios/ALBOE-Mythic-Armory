@@ -1,7 +1,12 @@
 {
+  "tooltip.alboe_mythicarmory.allowed_overbinding": "* This will not cause issues",
+
   "effect.alboe_mythicarmory.solar_charge": "Solar Charge",
   "effect.alboe_mythicarmory.solar_drain": "Solar Drain",
   "effect.alboe_mythicarmory.lunar_shield": "Lunar Shield",
+  "effect.alboe_mythicarmory.glide": "Zephyr",
+  "effect.alboe_mythicarmory.glide_charge": "Zephyr Energy",
+  "effect.alboe_mythicarmory.dash_cooldown": "Zephyr Deficit",
 
   "itemGroup.alboe_mythicarmory.name": "ALBOE! Mythic Armory",
 
@@ -13,7 +18,6 @@
 
   "item.alboe_mythicarmory.solaris_edge": "Solaris Edge",
   "item.alboe_mythicarmory.solaris_edge.tooltip1": "Divine Passive: Horizon Shift",
-  "item.alboe_mythicarmory.solaris_edge.tooltip44": "which travels %s blocks, deals damage and",
   "item.alboe_mythicarmory.solaris_edge.tooltip2": "During the day, your blade glows brighter, and gains %s%% bonus damage",
   "item.alboe_mythicarmory.solaris_edge.tooltip3": "and regens %sHP every %ss. At night, it gets %s%% weaker and loses this effect.",
   "item.alboe_mythicarmory.solaris_edge.tooltip4": "During the night, your blade shifts to be more defensive.",
@@ -27,9 +31,24 @@
   "item.alboe_mythicarmory.solaris_edge.tooltip12": "in front for 5s. Reflect 15% of blocked damage to enemies",
   "item.alboe_mythicarmory.solaris_edge.tooltip13": "in a 5-block AoE and causes Blindness.",
   "item.alboe_mythicarmory.solaris_edge.tooltip14": "Bonus Effect: Solar Overload",
-  "item.alboe_mythicarmory.solaris_edge.tooltip15": "Have a meter that charges with sunlight for %ss.",
+  "item.alboe_mythicarmory.solaris_edge.tooltip15": "This weapon powers up in direct sunlight for %ss.",
   "item.alboe_mythicarmory.solaris_edge.tooltip16": "Empowers daytime right-click with increased range and explosive damage.",
 
+  "item.alboe_mythicarmory.sky_thresher": "Sky Thresher",
+  "item.alboe_mythicarmory.sky_thresher.tooltip1": "Divine Passive: Zephyr",
+  "item.alboe_mythicarmory.sky_thresher.tooltip2": "Grants enhanced jump height, speed, and allows gliding for %ss",
+  "item.alboe_mythicarmory.sky_thresher.tooltip3": "until energy is depleted. Recharges within %ss.",
+  "item.alboe_mythicarmory.sky_thresher.tooltip4": "At night gain a double-tap dash in any direction which has a",
+  "item.alboe_mythicarmory.sky_thresher.tooltip5": "%ss cooldown. Leaves behind a trail of clouds with each dash.",
+  "item.alboe_mythicarmory.sky_thresher.tooltip6": "Divine Passive: Mistral",
+  "item.alboe_mythicarmory.sky_thresher.tooltip7": "Each attack has a %s%% chance to summon a vortex of stardust,",
+  "item.alboe_mythicarmory.sky_thresher.tooltip8": "which slightly pulls enemies and causes nausea.",
+  "item.alboe_mythicarmory.sky_thresher.tooltip9": "Divine Ability: Nebula Storm",
+  "item.alboe_mythicarmory.sky_thresher.tooltip10": "Right-click to unleash a swirling nebula in front of you,",
+  "item.alboe_mythicarmory.sky_thresher.tooltip11": "dealing damage over time AoE magic damage, pulling enemies near",
+  "item.alboe_mythicarmory.sky_thresher.tooltip12": "its center and moves them around violently.",
+  "item.alboe_mythicarmory.sky_thresher.tooltip13": "After 5s seconds, the core bursts into a burst of light -",
+  "item.alboe_mythicarmory.sky_thresher.tooltip14": "a supernova dealing massive damage and knockback.",
 
   "spell.alboe_mythicarmory.eclipse_invocation_day.name": "Eclipse Invocation",
   "spell.alboe_mythicarmory.eclipse_invocation_night.name": "Eclipse Invocation",
@@ -38,10 +57,13 @@
   "spell.alboe_mythicarmory.eclipse_invocation_night.description": "See Weapon Description",
   "spell.alboe_mythicarmory.eclipse_invocation_empowered.description": "See Weapon Description",
 
+  "key.mythicarmory.category": "ALBOE! Mythic Armory",
+  "key.mythicarmory.dash": "Sky Thresher Dash",
 
   "text.config.alboe_mythicarmory.title": "ALBOE! Mythic Armory",
   "text.config.alboe_mythicarmory.button.weapons": "Weapons",
   "text.config.alboe_mythicarmory.button.loot": "Loot",
+  "text.config.alboe_mythicarmory.button.client": "Client",
   "text.config.alboe_mythicarmory.button.done": "Done",
   "text.config.alboe_mythicarmory.button.close": "Close",
 
@@ -60,16 +82,37 @@
   "text.config.alboe_mythicarmory/weapons.option.solarOverload.ticksToCharge": "Ticks to Charge Overload",
   "text.config.alboe_mythicarmory/weapons.option.solarOverload.ticksCanStore": "Overload Meter Max Ticks",
   "text.config.alboe_mythicarmory/weapons.option.solarOverload.cooldown": "Overload Cooldown",
+  "text.config.alboe_mythicarmory/weapons.section.skyThresher": "Sky Thresher",
+  "text.config.alboe_mythicarmory/weapons.option.skyThresherDamage": "Melee Damage",
+  "text.config.alboe_mythicarmory/weapons.option.skyThresherSwingSpeed": "Melee Swing Speed",
+  "text.config.alboe_mythicarmory/weapons.category.zephyr": "Zephyr Ability",
+  "text.config.alboe_mythicarmory/weapons.option.zephyr.jumpHeightIncrease": "Increased Jump Height",
+  "text.config.alboe_mythicarmory/weapons.option.zephyr.speedIncrease": "Increased Speed",
+  "text.config.alboe_mythicarmory/weapons.option.zephyr.slowFallCooldown": "Gliding Recharge Time",
+  "text.config.alboe_mythicarmory/weapons.option.zephyr.slowFallTime": "Gliding Duration",
+  "text.config.alboe_mythicarmory/weapons.option.zephyr.dashCooldown": "Dash Cooldown",
+  "text.config.alboe_mythicarmory/weapons.option.zephyr.dashStrength": "Dash Strength",
+  "text.config.alboe_mythicarmory/weapons.category.mistral": "Mistral Ability",
+  "text.config.alboe_mythicarmory/weapons.option.mistral.chance": "Chance to Proc",
+  "text.config.alboe_mythicarmory/weapons.option.mistral.nauseaDuration": "Nausea Duration",
+  "text.config.alboe_mythicarmory/weapons.option.mistral.pullStrength": "Nebula Pull Strength",
 
   "text.config.alboe_mythicarmory/loot.title": "ALBOE! Mythic Armory | Loot",
   "text.config.alboe_mythicarmory/loot.section.enabledWeapon": "Obtainable Weapons",
   "text.config.alboe_mythicarmory/loot.option.solarisEdgeEnabled": "Can Obtain Solaris Edge",
+  "text.config.alboe_mythicarmory/loot.option.skyThresherEnabled": "Can Obtain Sky Thresher",
   "text.config.alboe_mythicarmory/loot.section.generic": "Chest Loot",
   "text.config.alboe_mythicarmory/loot.option.divinityShrapnelChestChance": "Divinity Shrapnel Chance in Chests",
   "text.config.alboe_mythicarmory/loot.option.divineWeaponsChestChance": "Divine Weapons Chance in Chests",
   "text.config.alboe_mythicarmory/loot.section.bosses": "Boss Loot",
   "text.config.alboe_mythicarmory/loot.option.divineWeaponsBossChance": "Divine Weapons Chance from Bosses",
   "text.config.alboe_mythicarmory/loot.option.bosses": "Boss Loot Tables",
+
+  "text.config.alboe_mythicarmory/client.title": "ALBOE! Mythic Armory | Client",
+  "text.config.alboe_mythicarmory/client.section.abilities": "Weapon Abilities",
+  "text.config.alboe_mythicarmory/client.option.dashControl": "Sky Thresher Dash Direction",
+  "text.config.alboe_mythicarmory/client.option.dashControl.value.camera": "Camera",
+  "text.config.alboe_mythicarmory/client.option.dashControl.value.movement": "Movement",
 
   "": ""
 }

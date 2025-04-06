@@ -56,5 +56,9 @@ public class LootTableModifier {
         if(MythicArmoryMain.LOOT_CONFIG.solarisEdgeEnabled()) {
             pool.with(ItemEntry.builder(ItemRegistry.SOLARIS_EDGE));
         }
+
+        if(MythicArmoryMain.LOOT_CONFIG.skyThresherEnabled()) {
+            pool.with(ItemEntry.builder(ItemRegistry.SKY_THRESHER));
+        }
     }
 }

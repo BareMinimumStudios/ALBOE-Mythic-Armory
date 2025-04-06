@@ -6,12 +6,16 @@ import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.core.*;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import org.bareminimumstudios.mythicarmory.MythicArmoryClient;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.jetbrains.annotations.NotNull;
 
+@Environment(EnvType.CLIENT)
 public class WrapperConfigScreen extends BaseOwoScreen<FlowLayout> {
     public final Screen previous;
 
@@ -58,6 +62,17 @@ public class WrapperConfigScreen extends BaseOwoScreen<FlowLayout> {
                         button -> {
                             if(client != null) {
                                 client.setScreen(ConfigScreen.create(MythicArmoryMain.LOOT_CONFIG, this));
+                            }
+                        }
+                ).sizing(Sizing.fixed(100), Sizing.fixed(25)).margins(Insets.of(3))
+        );
+
+        rootComponent.child(
+                Components.button(
+                        Text.translatable("text.config.alboe_mythicarmory.button.client"),
+                        button -> {
+                            if(client != null) {
+                                client.setScreen(ConfigScreen.create(MythicArmoryClient.CLIENT_CONFIG, this));
                             }
                         }
                 ).sizing(Sizing.fixed(100), Sizing.fixed(25)).margins(Insets.of(3))

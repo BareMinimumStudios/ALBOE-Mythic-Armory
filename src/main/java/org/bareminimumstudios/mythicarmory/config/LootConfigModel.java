@@ -15,6 +15,8 @@ public class LootConfigModel {
     @SectionHeader("enabledWeapon")
     @RestartRequired
     public boolean solarisEdgeEnabled = true;
+    @RestartRequired
+    public boolean skyThresherEnabled = true;
 
     @SectionHeader("generic")
     @RestartRequired

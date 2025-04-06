@@ -12,6 +12,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Rarity;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.item.DivinityShrapnelItem;
+import org.bareminimumstudios.mythicarmory.item.SkyThresherItem;
 import org.bareminimumstudios.mythicarmory.item.SolarisEdgeItem;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 
@@ -31,6 +32,12 @@ public class ItemRegistry {
             new Item.Settings()
     ));
 
+    public static final Item SKY_THRESHER = register("sky_thresher", new SkyThresherItem(
+            MythicArmoryMain.WEAPONS_CONFIG.skyThresherDamage() - 6,
+            MythicArmoryMain.WEAPONS_CONFIG.skyThresherSwingSpeed() - 4.0f,
+            new Item.Settings()
+    ));
+
     // Item Group
     public static final RegistryKey<ItemGroup> KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), HelperMethods.identifierOf("main"));
     public static final ItemGroup ITEM_GROUP = FabricItemGroup.builder()
@@ -45,6 +52,7 @@ public class ItemRegistry {
                 itemGroup -> {
                     itemGroup.add(DIVINITY_SHRAPNEL);
                     itemGroup.add(SOLARIS_EDGE);
+                    itemGroup.add(SKY_THRESHER);
                 }
         );
     }
