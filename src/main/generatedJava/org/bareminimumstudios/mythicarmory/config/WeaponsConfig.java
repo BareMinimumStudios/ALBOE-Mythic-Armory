@@ -34,6 +34,9 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
     private final Option<java.lang.Float> mistral_chance = this.optionForKey(this.keys.mistral_chance);
     private final Option<java.lang.Integer> mistral_nauseaDuration = this.optionForKey(this.keys.mistral_nauseaDuration);
     private final Option<java.lang.Float> mistral_pullStrength = this.optionForKey(this.keys.mistral_pullStrength);
+    private final Option<java.lang.Integer> mistral_pullInterval = this.optionForKey(this.keys.mistral_pullInterval);
+    private final Option<java.lang.Integer> mistral_vortexDuration = this.optionForKey(this.keys.mistral_vortexDuration);
+    private final Option<java.lang.Double> mistral_pullRange = this.optionForKey(this.keys.mistral_pullRange);
 
     private WeaponsConfig() {
         super(org.bareminimumstudios.mythicarmory.config.WeaponConfigModel.class);
@@ -234,6 +237,30 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
             mistral_pullStrength.set(value);
         }
 
+        public int pullInterval() {
+            return mistral_pullInterval.value();
+        }
+
+        public void pullInterval(int value) {
+            mistral_pullInterval.set(value);
+        }
+
+        public int vortexDuration() {
+            return mistral_vortexDuration.value();
+        }
+
+        public void vortexDuration(int value) {
+            mistral_vortexDuration.set(value);
+        }
+
+        public double pullRange() {
+            return mistral_pullRange.value();
+        }
+
+        public void pullRange(double value) {
+            mistral_pullRange.set(value);
+        }
+
     }
     public interface HorizonShift {
         float dayExtraDamage();
@@ -276,6 +303,12 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         void nauseaDuration(int value);
         float pullStrength();
         void pullStrength(float value);
+        int pullInterval();
+        void pullInterval(int value);
+        int vortexDuration();
+        void vortexDuration(int value);
+        double pullRange();
+        void pullRange(double value);
     }
     public static class Keys {
         public final Option.Key solarisEdgeDamage = new Option.Key("solarisEdgeDamage");
@@ -299,6 +332,9 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         public final Option.Key mistral_chance = new Option.Key("mistral.chance");
         public final Option.Key mistral_nauseaDuration = new Option.Key("mistral.nauseaDuration");
         public final Option.Key mistral_pullStrength = new Option.Key("mistral.pullStrength");
+        public final Option.Key mistral_pullInterval = new Option.Key("mistral.pullInterval");
+        public final Option.Key mistral_vortexDuration = new Option.Key("mistral.vortexDuration");
+        public final Option.Key mistral_pullRange = new Option.Key("mistral.pullRange");
     }
 }
 

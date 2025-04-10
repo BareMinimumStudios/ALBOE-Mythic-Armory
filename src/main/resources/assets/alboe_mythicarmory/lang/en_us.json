@@ -95,7 +95,10 @@
   "text.config.alboe_mythicarmory/weapons.category.mistral": "Mistral Ability",
   "text.config.alboe_mythicarmory/weapons.option.mistral.chance": "Chance to Proc",
   "text.config.alboe_mythicarmory/weapons.option.mistral.nauseaDuration": "Nausea Duration",
+  "text.config.alboe_mythicarmory/weapons.option.mistral.vortexDuration": "Nebula Vortex Duration",
   "text.config.alboe_mythicarmory/weapons.option.mistral.pullStrength": "Nebula Pull Strength",
+  "text.config.alboe_mythicarmory/weapons.option.mistral.pullInterval": "Nebula Pull Interval",
+  "text.config.alboe_mythicarmory/weapons.option.mistral.pullRange": "Nebula Pull Range",
 
   "text.config.alboe_mythicarmory/loot.title": "ALBOE! Mythic Armory | Loot",
   "text.config.alboe_mythicarmory/loot.section.enabledWeapon": "Obtainable Weapons",

@@ -10,7 +10,9 @@ import org.bareminimumstudios.mythicarmory.config.LootConfig;
 import org.bareminimumstudios.mythicarmory.config.WeaponsConfig;
 import org.bareminimumstudios.mythicarmory.networking.PacketHandler;
 import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
+import org.bareminimumstudios.mythicarmory.registry.EntityRegistry;
 import org.bareminimumstudios.mythicarmory.registry.ItemRegistry;
+import org.bareminimumstudios.mythicarmory.registry.ParticleRegistry;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 import org.bareminimumstudios.mythicarmory.util.LootTableModifier;
 import org.slf4j.Logger;
@@ -29,6 +31,8 @@ public class MythicArmoryMain implements ModInitializer {
 		EffectRegistry.register();
 		LootTableModifier.register();
 		PacketHandler.registerServerReceivers();
+		ParticleRegistry.register();
+		EntityRegistry.register();
 		initializeEventListeners();
 
 		LOGGER.info("ALBOE! Mythic Armory initialised successfully.");

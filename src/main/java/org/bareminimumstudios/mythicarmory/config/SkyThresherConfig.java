@@ -17,5 +17,8 @@ public class SkyThresherConfig {
         public float chance = 0.1f;
         public int nauseaDuration = 100;
         public float pullStrength = 0.1f;
+        public int pullInterval = 10;
+        public int vortexDuration = 120;
+        public double pullRange = 6;
     }
 }

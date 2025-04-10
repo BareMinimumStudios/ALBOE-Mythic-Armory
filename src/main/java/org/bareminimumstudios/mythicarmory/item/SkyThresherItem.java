@@ -10,6 +10,7 @@ import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
@@ -20,7 +21,10 @@ import net.minecraft.world.World;
 import net.spell_engine.particle.Particles;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.effect.TimerEffect;
+import org.bareminimumstudios.mythicarmory.entity.NebulaVortexEntity;
 import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
+import org.bareminimumstudios.mythicarmory.registry.EntityRegistry;
+import org.bareminimumstudios.mythicarmory.registry.ParticleRegistry;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 import org.bareminimumstudios.mythicarmory.util.ParticleHelper;
 import org.bareminimumstudios.mythicarmory.util.Styles;
@@ -34,6 +38,21 @@ public class SkyThresherItem extends DivineSwordItem {
 
     public SkyThresherItem(int attackDamage, float attackSpeed, Settings settings) {
         super(attackDamage, attackSpeed, settings);
+    }
+
+    @Override
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if(attacker.getWorld().isClient() || !(attacker instanceof PlayerEntity playerAttacker)) return super.postHit(stack, target, attacker);
+
+        if(attacker.getRandom().nextFloat() <= MythicArmoryMain.WEAPONS_CONFIG.mistral.chance()) {
+            NebulaVortexEntity summon = new NebulaVortexEntity(EntityRegistry.NEBULA_VORTEX, attacker.getWorld());
+            summon.setOwner(playerAttacker);
+            summon.setPos(target.getX(), target.getY(), target.getZ());
+
+            attacker.getWorld().spawnEntity(summon);
+        }
+
+        return super.postHit(stack, target, attacker);
     }
 
     @Override
