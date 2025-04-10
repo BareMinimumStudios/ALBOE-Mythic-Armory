@@ -87,9 +87,7 @@ public class SolarisEdgeItem extends DivineSwordItem {
     }
 
     public static void empower(World world, Entity entity, ItemStack stack, boolean showParticles) {
-        if(!world.isClient()) {
-            setForm(stack, Form.EMPOWERED);
-        }
+        setForm(stack, Form.EMPOWERED);
 
         if(showParticles) {
             ParticleHelper.spawnHorizontalBurst(
@@ -125,11 +123,6 @@ public class SolarisEdgeItem extends DivineSwordItem {
 
         LivingEntity livingEntity = (LivingEntity) entity;
 
-        // Empower the blade
-        if(isForm(stack, Form.DAY) && EffectRegistry.SOLAR_CHARGE.getTime(livingEntity) > MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge()) {
-            empower(world, entity, stack, HelperMethods.isHolding(livingEntity, stack, false));
-        }
-
         if(world.isClient()) return;
 
         // Swap form
@@ -145,6 +138,11 @@ public class SolarisEdgeItem extends DivineSwordItem {
                         1
                 ));
             }
+        }
+
+        // Empower
+        if(isForm(stack, Form.DAY) && EffectRegistry.SOLAR_CHARGE.getTime(livingEntity) > MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge()) {
+            empower(world, entity, stack, HelperMethods.isHolding(livingEntity, stack, false));
         }
 
         if(!world.isDay()) livingEntity.removeStatusEffect(EffectRegistry.SOLAR_CHARGE);

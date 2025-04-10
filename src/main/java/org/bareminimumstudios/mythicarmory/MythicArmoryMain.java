@@ -4,7 +4,6 @@ import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.player.PlayerEntity;
 import net.spell_engine.api.spell.SpellEvents;
 import org.bareminimumstudios.mythicarmory.config.LootConfig;
 import org.bareminimumstudios.mythicarmory.config.WeaponsConfig;

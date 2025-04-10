@@ -7,6 +7,7 @@ import net.minecraft.registry.Registry;
 import net.spell_engine.api.effect.Synchronized;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.effect.BlankEffect;
+import org.bareminimumstudios.mythicarmory.effect.GlideEffect;
 import org.bareminimumstudios.mythicarmory.effect.TimerEffect;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 
@@ -28,7 +29,7 @@ public class EffectRegistry {
             StatusEffectCategory.BENEFICIAL, 14935011
     ));
 
-    public static final StatusEffect GLIDE = register("glide", new BlankEffect(
+    public static final StatusEffect GLIDE = register("glide", new GlideEffect(
             StatusEffectCategory.NEUTRAL, 0
     ));
 

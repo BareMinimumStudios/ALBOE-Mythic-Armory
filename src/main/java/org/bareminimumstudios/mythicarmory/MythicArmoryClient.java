@@ -3,15 +3,12 @@ package org.bareminimumstudios.mythicarmory;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
-import net.minecraft.predicate.item.ItemPredicate;
 import net.spell_engine.api.effect.CustomModelStatusEffect;
 import net.spell_engine.api.render.CustomModels;
 import org.bareminimumstudios.mythicarmory.client.InputHandler;
 import org.bareminimumstudios.mythicarmory.client.renderers.LunarShieldRenderer;
 import org.bareminimumstudios.mythicarmory.config.ClientConfig;
-import org.bareminimumstudios.mythicarmory.config.WeaponsConfig;
 import org.bareminimumstudios.mythicarmory.item.SolarisEdgeItem;
 import org.bareminimumstudios.mythicarmory.networking.PacketHandler;
 import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
@@ -19,10 +16,7 @@ import org.bareminimumstudios.mythicarmory.registry.EntityRegistry;
 import org.bareminimumstudios.mythicarmory.registry.ItemRegistry;
 import org.bareminimumstudios.mythicarmory.registry.ParticleRegistry;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @Environment(EnvType.CLIENT)

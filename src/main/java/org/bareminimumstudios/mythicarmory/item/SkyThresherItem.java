@@ -2,6 +2,7 @@ package org.bareminimumstudios.mythicarmory.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -15,13 +16,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
+import net.minecraft.registry.Registries;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.spell_engine.particle.Particles;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.effect.TimerEffect;
 import org.bareminimumstudios.mythicarmory.entity.NebulaVortexEntity;
+import org.bareminimumstudios.mythicarmory.networking.S2C.S2CSquareParticles;
 import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
 import org.bareminimumstudios.mythicarmory.registry.EntityRegistry;
 import org.bareminimumstudios.mythicarmory.registry.ParticleRegistry;
@@ -53,6 +59,13 @@ public class SkyThresherItem extends DivineSwordItem {
         }
 
         return super.postHit(stack, target, attacker);
+    }
+
+    @Override
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        if(world.isClient()) return super.use(world, user, hand);
+
+        return super.use(world, user, hand);
     }
 
     @Override
