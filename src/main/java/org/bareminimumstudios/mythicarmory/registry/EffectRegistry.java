@@ -8,6 +8,7 @@ import net.spell_engine.api.effect.Synchronized;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.effect.BlankEffect;
 import org.bareminimumstudios.mythicarmory.effect.GlideEffect;
+import org.bareminimumstudios.mythicarmory.effect.NexusEffect;
 import org.bareminimumstudios.mythicarmory.effect.TimerEffect;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 
@@ -37,7 +38,10 @@ public class EffectRegistry {
             StatusEffectCategory.HARMFUL, HelperMethods.toDecimalColor(82, 2, 89),
             MythicArmoryMain.WEAPONS_CONFIG.zephyr.dashCooldown()));
 
-    public static final TimerEffect ZEPHYR_ENERGY = register("zephyr_energy", new TimerEffect(
+    public static final BlankEffect NEXUS_STORM = register("nexus_storm", new NexusEffect(
+            StatusEffectCategory.BENEFICIAL, HelperMethods.toDecimalColor(82, 2, 89)));
+
+    public static final TimerEffect ZEPHYR_ENERGY = register("glide_charge", new TimerEffect(
             StatusEffectCategory.BENEFICIAL, HelperMethods.toDecimalColor(60, 60, 180),
             (entity, world) -> entity.isOnGround()
                     && world.getTime() % 3 < 2

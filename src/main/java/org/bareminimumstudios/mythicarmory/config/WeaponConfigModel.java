@@ -27,4 +27,6 @@ public class WeaponConfigModel {
     public SkyThresherConfig.Zephyr zephyr = new SkyThresherConfig.Zephyr();
     @Nest
     public SkyThresherConfig.Mistral mistral = new SkyThresherConfig.Mistral();
+    @Nest
+    public SkyThresherConfig.NebulaStorm nebulaStorm = new SkyThresherConfig.NebulaStorm();
 }

@@ -5,12 +5,15 @@ import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.PacketType;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.Vec3d;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
 import org.bareminimumstudios.mythicarmory.registry.ItemRegistry;
+import org.bareminimumstudios.mythicarmory.registry.ParticleRegistry;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
+import org.bareminimumstudios.mythicarmory.util.ParticleHelper;
 
 public class C2SDashPacket implements FabricPacket {
     public static final PacketType<C2SDashPacket> TYPE =
@@ -41,6 +44,11 @@ public class C2SDashPacket implements FabricPacket {
                     EffectRegistry.ZEPHYR_DEFICIT,
                     MythicArmoryMain.WEAPONS_CONFIG.zephyr.dashCooldown()
             ));
+
+            ParticleHelper.spawn2DSquare(player.getWorld(), ParticleRegistry.SHORT_NEBULA,
+                    player.getX(), player.getEyeY() - 0.5, player.getZ(),
+                    1, packet.yaw + 180, 0, 0,
+                    0.6, 1, 150, true);
         }
     }
 

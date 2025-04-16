@@ -2,5 +2,92 @@
   "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "alboe_mythicarmory:item/sky_thresher"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        13.5,
+        0.5
+      ],
+      "scale": [
+        2.125,
+        2.125,
+        1
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        13.5,
+        0.5
+      ],
+      "scale": [
+        2.125,
+        2.125,
+        1
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        25
+      ],
+      "translation": [
+        2.04,
+        3.2,
+        2.04
+      ],
+      "scale": [
+        1.8,
+        1.8,
+        0.75
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -25
+      ],
+      "translation": [
+        2.04,
+        3.2,
+        2.04
+      ],
+      "scale": [
+        1.8,
+        1.8,
+        0.75
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1.25,
+        1.25,
+        0.9
+      ]
+    }
   }
 }

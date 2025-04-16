@@ -3,6 +3,7 @@ package org.bareminimumstudios.mythicarmory.item;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -25,6 +26,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.spell_engine.particle.Particles;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
+import org.bareminimumstudios.mythicarmory.client.InputHandler;
 import org.bareminimumstudios.mythicarmory.effect.TimerEffect;
 import org.bareminimumstudios.mythicarmory.entity.NebulaVortexEntity;
 import org.bareminimumstudios.mythicarmory.networking.S2C.S2CSquareParticles;
@@ -101,23 +103,27 @@ public class SkyThresherItem extends DivineSwordItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip1").setStyle(Styles.DIVINE_EFFECT.get()));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip2"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip3"));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip2",
+                HelperMethods.ticksToSeconds(MythicArmoryMain.WEAPONS_CONFIG.zephyr.slowFallTime())));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip3",
+                MinecraftClient.getInstance().options.jumpKey.getBoundKeyLocalizedText()));
         tooltip.add(Text.literal(""));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip4"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip5"));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip4",
+                InputHandler.dashKey.getBoundKeyLocalizedText(),
+                HelperMethods.ticksToSeconds(MythicArmoryMain.WEAPONS_CONFIG.zephyr.dashCooldown())));
         tooltip.add(Text.literal(""));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip6").setStyle(Styles.DIVINE_EFFECT.get()));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip5").setStyle(Styles.DIVINE_EFFECT.get()));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip6",
+                HelperMethods.decimalToPercentage(MythicArmoryMain.WEAPONS_CONFIG.mistral.chance())));
         tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip7"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip8"));
         tooltip.add(Text.literal(""));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip9").setStyle(Styles.DIVINE_EFFECT.get()));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip8").setStyle(Styles.DIVINE_EFFECT.get()));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip9"));
         tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip10"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip11"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip12"));
         tooltip.add(Text.literal(""));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip13"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip14"));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip11",
+                HelperMethods.ticksToSeconds(MythicArmoryMain.WEAPONS_CONFIG.nebulaStorm.duration())));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.sky_thresher.tooltip12"));
 
         super.appendTooltip(stack, world, tooltip, context);
     }

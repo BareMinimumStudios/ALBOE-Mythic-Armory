@@ -1,0 +1,38 @@
+{
+  "school": "ARCANE",
+  "range": 0,
+  "cast": {
+    "duration": 3,
+    "animation": "spell_engine:two_handed_channeling",
+    "sound": {
+      "id": "minecraft:block.beacon.activate"
+    },
+    "channel_ticks": 10
+  },
+  "release": {
+    "target": {
+      "type": "CURSOR",
+      "cursor": {
+        "use_caster_as_fallback": true
+      }
+    }
+  },
+  "impact": [
+    {
+      "action": {
+        "type": "STATUS_EFFECT",
+        "status_effect": {
+          "effect_id": "alboe_mythicarmory:nexus_storm",
+          "duration": 1,
+          "apply_mode": "SET",
+          "show_particles": false
+        },
+        "apply_to_caster": true
+      }
+    }
+  ],
+  "cost": {
+    "cooldown_duration": 20,
+    "cooldown_proportional": false
+  }
+}

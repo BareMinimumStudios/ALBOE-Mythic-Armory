@@ -20,7 +20,7 @@ import java.util.OptionalInt;
 import java.util.UUID;
 
 public class AbilityPointEntity extends PathAwareEntity {
-    protected static final TrackedData<Optional<UUID>> OWNER = DataTracker.registerData(AbilityPointEntity.class, TrackedDataHandlerRegistry.OPTIONAL_UUID);;
+    protected static final TrackedData<Optional<UUID>> OWNER = DataTracker.registerData(AbilityPointEntity.class, TrackedDataHandlerRegistry.OPTIONAL_UUID);
 
     public AbilityPointEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
@@ -95,8 +95,8 @@ public class AbilityPointEntity extends PathAwareEntity {
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
 
-        if(this.getOwner() != null) {
-            nbt.putUuid("Owner", this.getOwner().getUuid());
+        if(nbt.contains("Owner")) {
+            this.setOwner(nbt.getUuid("Owner"));
         }
     }
 
@@ -104,8 +104,8 @@ public class AbilityPointEntity extends PathAwareEntity {
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
 
-        if(nbt.contains("Owner")) {
-            this.setOwner(nbt.getUuid("Owner"));
+        if(this.getOwner() != null) {
+            nbt.putUuid("Owner", this.getOwner().getUuid());
         }
     }
 }

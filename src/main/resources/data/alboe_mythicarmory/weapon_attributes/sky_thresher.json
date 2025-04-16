@@ -1,0 +1,32 @@
+{
+  "attributes": {
+    "attack_range": 3.6,
+    "category": "sword",
+    "two_handed": false,
+    "pose": "alboe_mythicarmory:sky_thresher_pose",
+    "attacks": [
+      {
+        "hitbox": "FORWARD_BOX",
+        "damage_multiplier": 1.0,
+        "angle": 0,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slash_vertical_right",
+        "swing_sound": {
+          "id": "bettercombat:claymore_swing",
+          "pitch": 0.3
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1,
+        "angle": 120,
+        "upswing": 0.5,
+        "animation": "bettercombat:one_handed_slash_horizontal_right",
+        "swing_sound": {
+          "id": "bettercombat:claymore_swing",
+          "volume": 0.4
+        }
+      }
+    ]
+  }
+}

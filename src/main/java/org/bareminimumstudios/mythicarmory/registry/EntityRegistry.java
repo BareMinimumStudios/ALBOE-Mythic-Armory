@@ -11,6 +11,7 @@ import net.minecraft.registry.Registry;
 import org.bareminimumstudios.mythicarmory.client.models.InvisibleModel;
 import org.bareminimumstudios.mythicarmory.client.renderers.InvisibleRenderer;
 import org.bareminimumstudios.mythicarmory.entity.NebulaVortexEntity;
+import org.bareminimumstudios.mythicarmory.entity.NexusEntity;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 
 public class EntityRegistry {
@@ -22,11 +23,20 @@ public class EntityRegistry {
                     .build(HelperMethods.identifierOf("nebula_vortex").toString())
     );
 
+    public static final EntityType<NexusEntity> NEBULA_NEXUS = register(
+            "nebula_nexus",
+            EntityType.Builder.create(NexusEntity::new, SpawnGroup.MISC)
+                    .makeFireImmune()
+                    .setDimensions(0.5f, 0.5f)
+                    .build(HelperMethods.identifierOf("nebula_nexus").toString())
+    );
+
 
 
 
     public static void register() {
         FabricDefaultAttributeRegistry.register(NEBULA_VORTEX, NebulaVortexEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(NEBULA_NEXUS, NexusEntity.createAttributes());
     }
 
     public static <T extends Entity> EntityType<T> register(String id, EntityType<T> entity) {
@@ -36,6 +46,7 @@ public class EntityRegistry {
 
     public static void registerRenderers() {
         EntityRendererRegistry.register(NEBULA_VORTEX, InvisibleRenderer::new);
+        EntityRendererRegistry.register(NEBULA_NEXUS, InvisibleRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(InvisibleModel.INVISIBLE, InvisibleModel::getTexturedModelData);
     }
 }

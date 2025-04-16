@@ -5,7 +5,7 @@ import io.wispforest.owo.config.annotation.RestartRequired;
 public class SkyThresherConfig {
     public static class Zephyr {
         public float jumpHeightIncrease = 0.5f;
-        public float speedIncrease = 0.01f;
+        public float speedIncrease = 0.3f;
         @RestartRequired
         public int slowFallTime = 200;
         @RestartRequired
@@ -20,5 +20,11 @@ public class SkyThresherConfig {
         public int pullInterval = 10;
         public int vortexDuration = 120;
         public double pullRange = 6;
+    }
+
+    public static class NebulaStorm {
+        public float damage = 15f;
+        public double speed = 0.3f;
+        public int duration = 180;
     }
 }

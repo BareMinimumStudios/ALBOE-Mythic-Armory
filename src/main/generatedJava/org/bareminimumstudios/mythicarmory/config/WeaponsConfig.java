@@ -37,6 +37,9 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
     private final Option<java.lang.Integer> mistral_pullInterval = this.optionForKey(this.keys.mistral_pullInterval);
     private final Option<java.lang.Integer> mistral_vortexDuration = this.optionForKey(this.keys.mistral_vortexDuration);
     private final Option<java.lang.Double> mistral_pullRange = this.optionForKey(this.keys.mistral_pullRange);
+    private final Option<java.lang.Float> nebulaStorm_damage = this.optionForKey(this.keys.nebulaStorm_damage);
+    private final Option<java.lang.Double> nebulaStorm_speed = this.optionForKey(this.keys.nebulaStorm_speed);
+    private final Option<java.lang.Integer> nebulaStorm_duration = this.optionForKey(this.keys.nebulaStorm_duration);
 
     private WeaponsConfig() {
         super(org.bareminimumstudios.mythicarmory.config.WeaponConfigModel.class);
@@ -262,6 +265,33 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         }
 
     }
+    public final NebulaStorm_ nebulaStorm = new NebulaStorm_();
+    public class NebulaStorm_ implements NebulaStorm {
+        public float damage() {
+            return nebulaStorm_damage.value();
+        }
+
+        public void damage(float value) {
+            nebulaStorm_damage.set(value);
+        }
+
+        public double speed() {
+            return nebulaStorm_speed.value();
+        }
+
+        public void speed(double value) {
+            nebulaStorm_speed.set(value);
+        }
+
+        public int duration() {
+            return nebulaStorm_duration.value();
+        }
+
+        public void duration(int value) {
+            nebulaStorm_duration.set(value);
+        }
+
+    }
     public interface HorizonShift {
         float dayExtraDamage();
         void dayExtraDamage(float value);
@@ -310,6 +340,14 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         double pullRange();
         void pullRange(double value);
     }
+    public interface NebulaStorm {
+        float damage();
+        void damage(float value);
+        double speed();
+        void speed(double value);
+        int duration();
+        void duration(int value);
+    }
     public static class Keys {
         public final Option.Key solarisEdgeDamage = new Option.Key("solarisEdgeDamage");
         public final Option.Key solarisEdgeSwingSpeed = new Option.Key("solarisEdgeSwingSpeed");
@@ -335,6 +373,9 @@ public class WeaponsConfig extends ConfigWrapper<org.bareminimumstudios.mythicar
         public final Option.Key mistral_pullInterval = new Option.Key("mistral.pullInterval");
         public final Option.Key mistral_vortexDuration = new Option.Key("mistral.vortexDuration");
         public final Option.Key mistral_pullRange = new Option.Key("mistral.pullRange");
+        public final Option.Key nebulaStorm_damage = new Option.Key("nebulaStorm.damage");
+        public final Option.Key nebulaStorm_speed = new Option.Key("nebulaStorm.speed");
+        public final Option.Key nebulaStorm_duration = new Option.Key("nebulaStorm.duration");
     }
 }
 
