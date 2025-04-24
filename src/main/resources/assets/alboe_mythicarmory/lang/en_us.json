@@ -123,5 +123,9 @@
   "text.config.alboe_mythicarmory/client.option.dashControl.value.camera": "Camera",
   "text.config.alboe_mythicarmory/client.option.dashControl.value.movement": "Movement",
 
+  "subtitle.alboe_mythicarmory/mistral_ambient": "Mistral Whirls",
+  "subtitle.alboe_mythicarmory/nexus_ambient": "Nebula Storm Rages",
+  "subtitle.alboe_mythicarmory/nexus_implodes": "Nebula Storm Implodes",
+
   "": ""
 }

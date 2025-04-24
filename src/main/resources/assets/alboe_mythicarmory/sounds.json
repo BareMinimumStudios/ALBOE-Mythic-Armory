@@ -1,5 +1,6 @@
 {
   "mistral": {
+    "subtitle": "subtitle.alboe_mythicarmory/mistral_ambient",
     "min_distance": 10,
     "max_distance": 20,
     "sounds": [
@@ -19,6 +20,7 @@
     ]
   },
   "nebula_windup": {
+    "subtitle": "subtitle.alboe_mythicarmory/nexus_ambient",
     "min_distance": 10,
     "max_distance": 20,
     "sounds": [
@@ -28,6 +30,7 @@
     ]
   },
   "nebula_explosion": {
+    "subtitle": "subtitle.alboe_mythicarmory/nexus_implodes",
     "min_distance": 10,
     "max_distance": 20,
     "sounds": [
