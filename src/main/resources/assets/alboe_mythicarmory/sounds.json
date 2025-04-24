@@ -1,0 +1,39 @@
+{
+  "mistral": {
+    "min_distance": 10,
+    "max_distance": 20,
+    "sounds": [
+      {
+        "name": "alboe_mythicarmory:mistral",
+        "stream": true
+      }
+    ]
+  },
+  "mistral_fade": {
+    "min_distance": 10,
+    "max_distance": 20,
+    "sounds": [
+      {
+        "name": "alboe_mythicarmory:mistral_fade"
+      }
+    ]
+  },
+  "nebula_windup": {
+    "min_distance": 10,
+    "max_distance": 20,
+    "sounds": [
+      {
+        "name": "alboe_mythicarmory:nebula_windup"
+      }
+    ]
+  },
+  "nebula_explosion": {
+    "min_distance": 10,
+    "max_distance": 20,
+    "sounds": [
+      {
+        "name": "alboe_mythicarmory:nebula_explode"
+      }
+    ]
+  }
+}

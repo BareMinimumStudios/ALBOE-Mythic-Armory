@@ -46,6 +46,7 @@ public class S2CBurstParticles implements FabricPacket {
         this.dy = dy;
     }
 
+    @SuppressWarnings("unused")
     public static void receive(S2CBurstParticles packet, ClientPlayerEntity client, PacketSender sender) {
         ParticleHelper.spawnHorizontalBurst(client.getWorld(), (DefaultParticleType) Registries.PARTICLE_TYPE.get(packet.particle),
                 packet.x, packet.y, packet.z,

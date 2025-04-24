@@ -2,6 +2,7 @@ package org.bareminimumstudios.mythicarmory.config;
 
 import io.wispforest.owo.config.annotation.RestartRequired;
 
+@SuppressWarnings("unused")
 public class SkyThresherConfig {
     public static class Zephyr {
         public float jumpHeightIncrease = 0.5f;
@@ -23,7 +24,8 @@ public class SkyThresherConfig {
     }
 
     public static class NebulaStorm {
-        public float damage = 15f;
+        public float explosionDamage = 8f;
+        public float trappedDamage = 4f;
         public double speed = 0.3f;
         public int duration = 180;
     }

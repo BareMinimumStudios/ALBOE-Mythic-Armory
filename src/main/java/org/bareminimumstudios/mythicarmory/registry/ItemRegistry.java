@@ -9,7 +9,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
-import net.minecraft.util.Rarity;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.item.DivinityShrapnelItem;
 import org.bareminimumstudios.mythicarmory.item.SkyThresherItem;

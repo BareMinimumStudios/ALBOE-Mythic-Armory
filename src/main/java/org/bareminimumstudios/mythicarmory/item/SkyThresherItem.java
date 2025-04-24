@@ -2,7 +2,6 @@ package org.bareminimumstudios.mythicarmory.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -14,32 +13,18 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtList;
-import net.minecraft.nbt.NbtString;
-import net.minecraft.registry.Registries;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import net.spell_engine.particle.Particles;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.client.InputHandler;
-import org.bareminimumstudios.mythicarmory.effect.TimerEffect;
 import org.bareminimumstudios.mythicarmory.entity.NebulaVortexEntity;
-import org.bareminimumstudios.mythicarmory.networking.S2C.S2CSquareParticles;
 import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
 import org.bareminimumstudios.mythicarmory.registry.EntityRegistry;
-import org.bareminimumstudios.mythicarmory.registry.ParticleRegistry;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
-import org.bareminimumstudios.mythicarmory.util.ParticleHelper;
 import org.bareminimumstudios.mythicarmory.util.Styles;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 public class SkyThresherItem extends DivineSwordItem {
@@ -61,13 +46,6 @@ public class SkyThresherItem extends DivineSwordItem {
         }
 
         return super.postHit(stack, target, attacker);
-    }
-
-    @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if(world.isClient()) return super.use(world, user, hand);
-
-        return super.use(world, user, hand);
     }
 
     @Override

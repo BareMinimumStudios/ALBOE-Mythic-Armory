@@ -20,7 +20,7 @@ public class InvisibleModel<T extends MobEntity> extends SinglePartEntityModel<T
     public static TexturedModelData getTexturedModelData() {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
-        ModelPartData bb_main = modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(2, 2).cuboid(-1.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
+        modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(2, 2).cuboid(-1.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
         return TexturedModelData.of(modelData, 16, 16);
     }
 

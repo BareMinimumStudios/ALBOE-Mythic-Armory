@@ -1,13 +1,10 @@
 package org.bareminimumstudios.mythicarmory.effect;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.text.Text;
 import net.minecraft.world.World;
-import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
 
 import java.util.function.BiPredicate;
 
@@ -33,6 +30,7 @@ public class TimerEffect extends StatusEffect {
 
     public int getTime(LivingEntity entity) {
         if(entity.hasStatusEffect(this)) {
+            // noinspection DataFlowIssue
             return entity.getStatusEffect(this).getDuration();
         }
 
@@ -44,6 +42,7 @@ public class TimerEffect extends StatusEffect {
         super.applyUpdateEffect(entity, amplifier);
 
         if(shouldTickUpwards(entity, entity.getWorld())) {
+            // noinspection DataFlowIssue
             entity.addStatusEffect(
                     new StatusEffectInstance(
                             this,
@@ -52,6 +51,7 @@ public class TimerEffect extends StatusEffect {
                     )
             );
         } else if (shouldSustain(entity, entity.getWorld())) {
+            // noinspection DataFlowIssue
             entity.addStatusEffect(
                     new StatusEffectInstance(
                             this,

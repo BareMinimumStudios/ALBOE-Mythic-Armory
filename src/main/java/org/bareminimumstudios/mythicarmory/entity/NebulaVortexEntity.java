@@ -4,6 +4,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
@@ -14,6 +15,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.registry.ParticleRegistry;
+import org.bareminimumstudios.mythicarmory.registry.SoundRegistry;
 import org.bareminimumstudios.mythicarmory.util.ParticleHelper;
 
 public class NebulaVortexEntity extends AbilityPointEntity {
@@ -63,10 +65,21 @@ public class NebulaVortexEntity extends AbilityPointEntity {
             );
         }
 
+        // Sounds
+        if(this.age % 40 == 5) {
+            this.getWorld().playSoundFromEntity(null, this, SoundRegistry.MISTRAL, this.getSoundCategory(), 1, 1);
+            this.getWorld().playSoundAtBlockCenter(this.getBlockPos(), SoundRegistry.MISTRAL_FADE, this.getSoundCategory(), 1f, 1, true);
+        }
+
         // Die
         if(this.age >= MythicArmoryMain.WEAPONS_CONFIG.mistral.vortexDuration()) {
-            this.discard();
+            this.kill();
         }
+    }
+
+    @Override
+    public void onDeath(DamageSource damageSource) {
+        super.onDeath(damageSource);
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {

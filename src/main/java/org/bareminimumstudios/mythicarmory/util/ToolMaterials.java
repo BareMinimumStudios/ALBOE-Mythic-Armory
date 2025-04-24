@@ -7,7 +7,6 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import org.bareminimumstudios.mythicarmory.registry.ItemRegistry;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

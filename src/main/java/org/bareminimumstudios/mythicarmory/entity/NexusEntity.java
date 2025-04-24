@@ -6,11 +6,10 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,17 +23,17 @@ import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
+import net.spell_power.api.SpellSchools;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
 import org.bareminimumstudios.mythicarmory.registry.ParticleRegistry;
+import org.bareminimumstudios.mythicarmory.registry.SoundRegistry;
+import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 import org.bareminimumstudios.mythicarmory.util.ParticleHelper;
 
-import java.util.Optional;
 import java.util.OptionalInt;
-import java.util.UUID;
 
 public class NexusEntity extends AbilityPointEntity {
 
@@ -99,13 +98,16 @@ public class NexusEntity extends AbilityPointEntity {
         return false;
     }
 
-    ///  Taken from the vanilla entity::isInsideWall, without the no-clip check
+    ///  Taken from the vanilla <code>entity::isInsideWall</code>, with the no-clip check removed
     public boolean isInBlock() {
         float f = this.getDimensions(getPose()).width * 0.8F;
         Box box = Box.of(this.getEyePos(), f, 1.0E-6, f);
         return BlockPos.stream(box).anyMatch((pos) -> {
             BlockState blockState = this.getWorld().getBlockState(pos);
-            return !blockState.isAir() && blockState.shouldSuffocate(this.getWorld(), pos) && VoxelShapes.matchesAnywhere(blockState.getCollisionShape(this.getWorld(), pos).offset((double)pos.getX(), (double)pos.getY(), (double)pos.getZ()), VoxelShapes.cuboid(box), BooleanBiFunction.AND);
+            return !blockState.isAir()
+                    && blockState.shouldSuffocate(this.getWorld(), pos)
+                    && VoxelShapes.matchesAnywhere(blockState.getCollisionShape(this.getWorld(), pos)
+                    .offset(pos.getX(), pos.getY(), pos.getZ()), VoxelShapes.cuboid(box), BooleanBiFunction.AND);
         });
     }
 
@@ -140,6 +142,11 @@ public class NexusEntity extends AbilityPointEntity {
         // Charging and Launching
         if(this.hasLaunched()) {
 
+            // Sounds
+            if(this.age % 40 == 5) {
+                this.getWorld().playSoundFromEntity(null, this, SoundRegistry.NEBULA_STORM, this.getSoundCategory(), 1, 1);
+            }
+
             // Grab
             double length = sizePercentage * 4.5f;
             Box box = new Box(
@@ -156,14 +163,26 @@ public class NexusEntity extends AbilityPointEntity {
                 if (this.getOwner() != null && (target.isTeammate(this.getOwner()) || target == this.getOwner()))
                     continue;
 
-                target.teleport(this.getX(), this.getY(), this.getZ());
-                target.setVelocity(new Vec3d(0, 0, 0));
+                if(target.age % 20 == 0) {
+                    target.damage(this.getMagicDamageSource(),
+                            MythicArmoryMain.WEAPONS_CONFIG.nebulaStorm.trappedDamage()
+                                    * sizePercentage
+                                    * HelperMethods.getScale(this.getOwner(), 0.15f, SpellSchools.ARCANE));
+                }
+
+                target.setVelocity(this.getVelocity().multiply(1.2d).add(new Vec3d(0, 0.1d, 0)));
                 target.velocityModified = true;
             }
 
             if (this.age >= MythicArmoryMain.WEAPONS_CONFIG.nebulaStorm.duration() - 20) {
                 // Explode
                 explode(this.age >= MythicArmoryMain.WEAPONS_CONFIG.nebulaStorm.duration());
+
+                // Play sound on first exploding frame
+                if(this.age == MythicArmoryMain.WEAPONS_CONFIG.nebulaStorm.duration() - 20) {
+                    this.getWorld().playSoundAtBlockCenter(this.getBlockPos(), SoundRegistry.NEBULA_EXPLOSION, this.getSoundCategory(), 1f, 1, true);
+                }
+
             } else {
                 if (this.isInBlock()) {
                     this.age = Math.max(age, MythicArmoryMain.WEAPONS_CONFIG.nebulaStorm.duration() - 20);
@@ -190,10 +209,17 @@ public class NexusEntity extends AbilityPointEntity {
                     this.setPos(newPos.getX(), newPos.getY(), newPos.getZ());
                 } else {
                     this.setLaunched(true);
+                    this.getWorld().playSoundAtBlockCenter(this.getBlockPos(), SoundRegistry.NEBULA_STORM, this.getSoundCategory(), 1f, 1, true);
                     this.setVelocity(normalisedOffset.multiply(MythicArmoryMain.WEAPONS_CONFIG.nebulaStorm.speed()));
                 }
             }
         }
+    }
+
+    public DamageSource getMagicDamageSource() {
+        if(this.getOwner() == null) return this.getDamageSources().magic();
+
+        return this.getOwner().getDamageSources().magic();
     }
 
     @Override
@@ -219,30 +245,33 @@ public class NexusEntity extends AbilityPointEntity {
         }
 
         // Damage
-        if(isFinal) {
-            float sizePercentage = this.getSize() / 50f;
-            double length = sizePercentage * 4.5f;
-            Box box = new Box(
-                    this.getX() - length,
-                    this.getY() - length,
-                    this.getZ() - length,
-                    this.getX() + length,
-                    this.getY() + length,
-                    this.getZ() + length
-            );
+        float sizePercentage = this.getSize() / 50f;
+        double length = sizePercentage * 6f;
+        Box box = new Box(
+                this.getX() - length,
+                this.getY() - length,
+                this.getZ() - length,
+                this.getX() + length,
+                this.getY() + length,
+                this.getZ() + length
+        );
 
-            for (LivingEntity target : this.getWorld().getNonSpectatingEntities(LivingEntity.class, box)) {
-                if (target == this) continue;
-                if (this.getOwner() != null && (target.isTeammate(this.getOwner()) || target == this.getOwner()))
-                    continue;
+        for (LivingEntity target : this.getWorld().getNonSpectatingEntities(LivingEntity.class, box)) {
+            if (target == this) continue;
+            if (this.getOwner() != null && (target.isTeammate(this.getOwner()) || target == this.getOwner()))
+                continue;
 
-                target.damage(this.getDamageSources().magic(), MythicArmoryMain.WEAPONS_CONFIG.nebulaStorm.damage() * sizePercentage);
-                target.takeKnockback(3, this.getX() + this.getRandom().nextFloat() - 0.5, this.getZ() + this.getRandom().nextFloat() - 0.5);
-            }
+            target.damage(this.getMagicDamageSource(),
+                    MythicArmoryMain.WEAPONS_CONFIG.nebulaStorm.explosionDamage()
+                            * sizePercentage
+                            * HelperMethods.getScale(this.getOwner(), 0.15f, SpellSchools.ARCANE));
 
-            this.discard();
+            target.takeKnockback(2.5, this.getX() + this.getRandom().nextFloat() - 0.5, this.getZ() + this.getRandom().nextFloat() - 0.5);
         }
 
+        if(isFinal) {
+            this.discard();
+        }
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {

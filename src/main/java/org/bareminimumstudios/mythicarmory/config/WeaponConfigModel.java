@@ -3,8 +3,8 @@ package org.bareminimumstudios.mythicarmory.config;
 
 import io.wispforest.owo.config.Option;
 import io.wispforest.owo.config.annotation.*;
-import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 
+@SuppressWarnings("unused")
 @Sync(Option.SyncMode.OVERRIDE_CLIENT)
 @Config(name = "alboe_mythicarmory/weapons", wrapperName = "WeaponsConfig")
 public class WeaponConfigModel {

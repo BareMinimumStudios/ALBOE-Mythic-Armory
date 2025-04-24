@@ -1,14 +1,14 @@
 package org.bareminimumstudios.mythicarmory.config;
 
 import io.wispforest.owo.config.Option;
-import io.wispforest.owo.config.annotation.*;
-import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
+import io.wispforest.owo.config.annotation.Config;
+import io.wispforest.owo.config.annotation.RestartRequired;
+import io.wispforest.owo.config.annotation.SectionHeader;
+import io.wispforest.owo.config.annotation.Sync;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+@SuppressWarnings("unused")
 @Sync(Option.SyncMode.NONE)
 @Config(name = "alboe_mythicarmory/loot", wrapperName = "LootConfig")
 public class LootConfigModel {

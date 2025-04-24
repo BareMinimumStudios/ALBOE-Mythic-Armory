@@ -4,12 +4,10 @@ import com.llamalad7.mixinextras.sugar.Local;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.option.ControlsListWidget;
-import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.client.InputHandler;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 import org.spongepowered.asm.mixin.Final;
@@ -37,6 +35,7 @@ public class KeyBindingEntryMixin {
 
     @Unique
     private boolean isOnlyIssuelessDuplicates = true;
+    @Unique
     private boolean hasIssuelessDuplicates = false;
 
     @Inject(method = "update", at = @At("HEAD"))
@@ -46,7 +45,7 @@ public class KeyBindingEntryMixin {
     }
 
     @ModifyArg(method = "update", at = @At(value = "INVOKE", target = "Lnet/minecraft/text/MutableText;append(Lnet/minecraft/text/Text;)Lnet/minecraft/text/MutableText;", ordinal = 0))
-    private Text mythicarmory$addIssuelessBinding(Text value, @Local(name = "keyBinding") KeyBinding other) {
+    private Text mythicarmory$addIssuelessBinding(Text value, @Local(ordinal = 0) KeyBinding other) {
         if (InputHandler.overrideKeybindings.contains(binding) || InputHandler.overrideKeybindings.contains(other)) {
             hasIssuelessDuplicates = true;
             return Text.literal("* ").append(Text.literal(value.getString())).formatted(Formatting.GRAY).formatted(Formatting.ITALIC);

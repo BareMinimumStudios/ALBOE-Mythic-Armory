@@ -4,13 +4,8 @@ import net.fabricmc.fabric.api.networking.v1.FabricPacket;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.PacketType;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.math.Vec3d;
 import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
 import org.bareminimumstudios.mythicarmory.registry.ItemRegistry;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
@@ -25,6 +20,7 @@ public class C2SGlidePacket implements FabricPacket {
     public C2SGlidePacket() {
     }
 
+    @SuppressWarnings("unused")
     public static void receive(C2SGlidePacket packet, ServerPlayerEntity player, PacketSender sender) {
         double fallSpeed = player.getVelocity().getY();
         if(fallSpeed < 0

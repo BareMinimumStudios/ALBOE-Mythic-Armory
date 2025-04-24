@@ -6,11 +6,22 @@
     "pose": "alboe_mythicarmory:sky_thresher_pose",
     "attacks": [
       {
-        "hitbox": "FORWARD_BOX",
-        "damage_multiplier": 1.0,
-        "angle": 0,
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1,
+        "angle": 150,
         "upswing": 0.5,
-        "animation": "bettercombat:two_handed_slash_vertical_right",
+        "animation": "alboe_mythicarmory:one_handed_upswing_right",
+        "swing_sound": {
+          "id": "bettercombat:claymore_swing",
+          "pitch": 0.6
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1,
+        "angle": 90,
+        "upswing": 0.5,
+        "animation": "alboe_mythicarmory:one_handed_low_sweep_horizontal_left",
         "swing_sound": {
           "id": "bettercombat:claymore_swing",
           "pitch": 0.3

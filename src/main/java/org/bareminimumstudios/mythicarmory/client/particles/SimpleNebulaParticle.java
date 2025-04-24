@@ -5,7 +5,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.util.math.Vec3d;
 
 public class SimpleNebulaParticle extends SpriteBillboardParticle {
 

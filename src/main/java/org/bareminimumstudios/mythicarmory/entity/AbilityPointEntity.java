@@ -1,7 +1,7 @@
 package org.bareminimumstudios.mythicarmory.entity;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.*;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
@@ -16,7 +16,6 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.UUID;
 
 public class AbilityPointEntity extends PathAwareEntity {

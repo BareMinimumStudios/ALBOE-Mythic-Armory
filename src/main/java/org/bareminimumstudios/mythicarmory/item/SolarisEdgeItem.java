@@ -19,7 +19,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.spell_engine.particle.Particles;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
-import org.bareminimumstudios.mythicarmory.effect.TimerEffect;
 import org.bareminimumstudios.mythicarmory.registry.EffectRegistry;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 import org.bareminimumstudios.mythicarmory.util.ParticleHelper;
@@ -161,36 +160,53 @@ public class SolarisEdgeItem extends DivineSwordItem {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        if(isForm(stack, Form.NIGHT)) {
+            appendNightTooltip(tooltip);
+        } else {
+            appendDayTooltip(tooltip);
+        }
+
+        super.appendTooltip(stack, world, tooltip, context);
+    }
+
+    public void appendDayTooltip(List<Text> tooltip) {
         tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip1").setStyle(Styles.DIVINE_EFFECT.get()));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip2",
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip2.day",
                 HelperMethods.decimalToPercentage(MythicArmoryMain.WEAPONS_CONFIG.horizonShift.dayExtraDamage())));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip3",
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip3.day",
                 String.valueOf(MythicArmoryMain.WEAPONS_CONFIG.horizonShift.dayRegenAmount()),
                 HelperMethods.ticksToSeconds(MythicArmoryMain.WEAPONS_CONFIG.horizonShift.regenInterval()),
                 HelperMethods.decimalToPercentage(MythicArmoryMain.WEAPONS_CONFIG.horizonShift.nightDealtDamageReduction())));
         tooltip.add(Text.literal(""));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip4"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip5",
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip4").setStyle(Styles.DIVINE_EFFECT.get()));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip5.day"));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip6.day"));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip7.day"));
+        tooltip.add(Text.literal(""));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip9").setStyle(Styles.DIVINE_EFFECT.get()));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip10",
+                HelperMethods.ticksToSeconds(MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge())));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip11"));
+    }
+
+    public void appendNightTooltip(List<Text> tooltip) {
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip1").setStyle(Styles.DIVINE_EFFECT.get()));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip2.night"));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip3.night",
                 HelperMethods.decimalToPercentage(MythicArmoryMain.WEAPONS_CONFIG.horizonShift.nightTakenDamageReduction()),
                 String.valueOf(MythicArmoryMain.WEAPONS_CONFIG.horizonShift.nightRegenAmount()),
                 HelperMethods.ticksToSeconds(MythicArmoryMain.WEAPONS_CONFIG.horizonShift.regenInterval())));
         tooltip.add(Text.literal(""));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip6").setStyle(Styles.DIVINE_EFFECT.get()));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip7"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip8"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip9"));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip4").setStyle(Styles.DIVINE_EFFECT.get()));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip5.night"));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip6.night"));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip7.night"));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip8.night"));
         tooltip.add(Text.literal(""));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip10"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip11"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip12"));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip13"));
-        tooltip.add(Text.literal(""));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip14").setStyle(Styles.DIVINE_EFFECT.get()));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip15",
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip9").setStyle(Styles.DIVINE_EFFECT.get()));
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip10",
                 HelperMethods.ticksToSeconds(MythicArmoryMain.WEAPONS_CONFIG.solarOverload.ticksToCharge())));
-        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip16"));
-
-        super.appendTooltip(stack, world, tooltip, context);
+        tooltip.add(Text.translatable("item.alboe_mythicarmory.solaris_edge.tooltip11"));
     }
 
     public enum Form {

@@ -11,9 +11,10 @@ import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 
 public class InvisibleRenderer<T extends MobEntity> extends MobEntityRenderer<T, InvisibleModel<T>> {
     public InvisibleRenderer(EntityRendererFactory.Context context) {
-        super(context, new InvisibleModel<T>(context.getPart(InvisibleModel.INVISIBLE)), 0f);
+        super(context, new InvisibleModel<>(context.getPart(InvisibleModel.INVISIBLE)), 0f);
     }
 
+    @SuppressWarnings("unused")
     public static TexturedModelData getTexturedModelData() {
         ModelData modelData = new ModelData();
         return TexturedModelData.of(modelData, 0, 0);

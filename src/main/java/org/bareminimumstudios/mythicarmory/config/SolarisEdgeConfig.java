@@ -2,6 +2,7 @@ package org.bareminimumstudios.mythicarmory.config;
 
 import io.wispforest.owo.config.annotation.RestartRequired;
 
+@SuppressWarnings("unused")
 public class SolarisEdgeConfig {
     public static class HorizonShift {
         public float dayExtraDamage = 0.25f;

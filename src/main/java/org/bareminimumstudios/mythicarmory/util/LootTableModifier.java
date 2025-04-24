@@ -7,9 +7,7 @@ import net.minecraft.loot.entry.ItemEntry;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.registry.ItemRegistry;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class LootTableModifier {
     private static final List<String> bossList = MythicArmoryMain.LOOT_CONFIG.bosses();

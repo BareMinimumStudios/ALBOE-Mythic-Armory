@@ -10,13 +10,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
 import net.spell_engine.api.effect.CustomModelStatusEffect;
-import net.spell_engine.api.render.CustomLayers;
 import net.spell_engine.api.render.CustomModels;
-import net.spell_engine.api.render.LightEmission;
-import net.spell_engine.api.render.OrbitingEffectRenderer;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
-
-import java.util.List;
 
 public class LunarShieldRenderer implements CustomModelStatusEffect.Renderer {
     public static final Identifier modelId_base = HelperMethods.identifierOf("effect/lunar_shield");

@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.PacketType;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.Vec3d;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
@@ -29,6 +28,8 @@ public class C2SDashPacket implements FabricPacket {
         this.yaw = yaw;
     }
 
+
+    @SuppressWarnings("unused")
     public static void receive(C2SDashPacket packet, ServerPlayerEntity player, PacketSender sender) {
         if(HelperMethods.isHolding(player, ItemRegistry.SKY_THRESHER, true)
                 && !player.hasStatusEffect(EffectRegistry.ZEPHYR_DEFICIT)

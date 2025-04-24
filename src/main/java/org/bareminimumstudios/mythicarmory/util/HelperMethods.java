@@ -1,14 +1,15 @@
 package org.bareminimumstudios.mythicarmory.util;
 
-import net.minecraft.client.MinecraftClient;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
+import net.spell_power.api.SpellPower;
+import net.spell_power.api.SpellSchool;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
-import org.w3c.dom.Text;
+import org.jetbrains.annotations.NotNull;
 
 import java.text.DecimalFormat;
 
@@ -99,5 +100,33 @@ public class HelperMethods {
         double normalisedValue = Math.sin(progress * 2 * Math.PI);
 
         return middle + (normalisedValue * bound);
+    }
+
+    /**
+     * Creates a multiplier from the player's spell scaling if the Spell Power Attributes mod is present (which it should almost always be).
+     *
+     * <p>If multiple spell schools are provided, their values are added together. Specifying the same school multiple times will apply its modifier multiple times.</p>
+     *
+     * @param player The player whose spell scaling attributes are being used to scale.
+     * @param coefficient  A multiplier applied to each school's spell power before being added to the total.
+     * @param schools The schools to scale from.
+     * @return A double value acting as a multiplier, scaled using the player's spell attributes.
+     */
+    public static float getScale(PlayerEntity player, float coefficient, @NotNull SpellSchool... schools) {
+        if(player == null) {
+            return 1f;
+        }
+
+        if (FabricLoader.getInstance().isModLoaded("spell_power")) {
+            double power = 1f;
+
+            for(SpellSchool school : schools) {
+                power += coefficient * SpellPower.getSpellPower(school, player).randomValue();
+            }
+
+            return (float) power;
+        }
+
+        return 1f;
     }
 }

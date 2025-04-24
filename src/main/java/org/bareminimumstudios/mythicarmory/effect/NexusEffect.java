@@ -1,15 +1,14 @@
 package org.bareminimumstudios.mythicarmory.effect;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.Box;
-import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.entity.NexusEntity;
 import org.bareminimumstudios.mythicarmory.registry.EntityRegistry;
 
-public class NexusEffect extends BlankEffect {
+public class NexusEffect extends StatusEffect {
     public NexusEffect(StatusEffectCategory category, int color) {
         super(category, color);
     }

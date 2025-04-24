@@ -3,16 +3,12 @@ package org.bareminimumstudios.mythicarmory.util;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
 import org.bareminimumstudios.mythicarmory.networking.S2C.S2CBurstParticles;
 import org.bareminimumstudios.mythicarmory.networking.S2C.S2CSquareParticles;
 
@@ -116,12 +112,12 @@ public class ParticleHelper {
                 double pitchR = -Math.toRadians(pitch);
                 double rollR = Math.toRadians(roll);
 
-                double x0 = posX, y0 = posY, z0 = posZ; // Roll
+                double x0 = posX, y0 = posY; // Roll
                 posX = (x0 * Math.cos(rollR)) - (y0 * Math.sin(rollR));
                 posY = (x0 * Math.sin(rollR)) + (y0 * Math.cos(rollR));
 
                 y0 = posY;
-                z0 = posZ; // Pitch
+                double z0 = posZ; // Pitch
                 posY = (y0 * Math.cos(pitchR)) - (z0 * Math.sin(pitchR));
                 posZ = (y0 * Math.sin(pitchR)) + (z0 * Math.cos(pitchR));
 

@@ -6,9 +6,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketType;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.particle.ParticleEffect;
 import net.minecraft.registry.Registries;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.bareminimumstudios.mythicarmory.util.HelperMethods;
 import org.bareminimumstudios.mythicarmory.util.ParticleHelper;
@@ -52,6 +50,7 @@ public class S2CSquareParticles implements FabricPacket {
         this.cropToCircle = cropToCircle;
     }
 
+    @SuppressWarnings("unused")
     public static void receive(S2CSquareParticles packet, ClientPlayerEntity client, PacketSender sender) {
         ParticleHelper.spawn2DSquare(client.getWorld(), (DefaultParticleType) Registries.PARTICLE_TYPE.get(packet.particle),
                 packet.x, packet.y, packet.z,

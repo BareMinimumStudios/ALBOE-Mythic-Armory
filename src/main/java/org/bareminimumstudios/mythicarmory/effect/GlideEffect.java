@@ -1,11 +1,12 @@
 package org.bareminimumstudios.mythicarmory.effect;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import org.bareminimumstudios.mythicarmory.registry.ParticleRegistry;
 import org.bareminimumstudios.mythicarmory.util.ParticleHelper;
 
-public class GlideEffect extends BlankEffect {
+public class GlideEffect extends StatusEffect {
     public GlideEffect(StatusEffectCategory category, int color) {
         super(category, color);
     }

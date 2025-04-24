@@ -6,7 +6,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.spell_engine.api.effect.Synchronized;
 import org.bareminimumstudios.mythicarmory.MythicArmoryMain;
-import org.bareminimumstudios.mythicarmory.effect.BlankEffect;
 import org.bareminimumstudios.mythicarmory.effect.GlideEffect;
 import org.bareminimumstudios.mythicarmory.effect.NexusEffect;
 import org.bareminimumstudios.mythicarmory.effect.TimerEffect;
@@ -26,7 +25,7 @@ public class EffectRegistry {
             StatusEffectCategory.HARMFUL, 16773856,
             MythicArmoryMain.WEAPONS_CONFIG.solarOverload.cooldown()));
 
-    public static final StatusEffect LUNAR_SHIELD = register("lunar_shield", new BlankEffect(
+    public static final StatusEffect LUNAR_SHIELD = register("lunar_shield", new StatusEffect(
             StatusEffectCategory.BENEFICIAL, 14935011
     ));
 
@@ -38,7 +37,7 @@ public class EffectRegistry {
             StatusEffectCategory.HARMFUL, HelperMethods.toDecimalColor(82, 2, 89),
             MythicArmoryMain.WEAPONS_CONFIG.zephyr.dashCooldown()));
 
-    public static final BlankEffect NEXUS_STORM = register("nexus_storm", new NexusEffect(
+    public static final StatusEffect NEXUS_STORM = register("nexus_storm", new NexusEffect(
             StatusEffectCategory.BENEFICIAL, HelperMethods.toDecimalColor(82, 2, 89)));
 
     public static final TimerEffect ZEPHYR_ENERGY = register("glide_charge", new TimerEffect(
