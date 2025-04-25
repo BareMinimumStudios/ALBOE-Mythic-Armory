@@ -4,7 +4,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
@@ -73,13 +72,8 @@ public class NebulaVortexEntity extends AbilityPointEntity {
 
         // Die
         if(this.age >= MythicArmoryMain.WEAPONS_CONFIG.mistral.vortexDuration()) {
-            this.kill();
+            this.discard();
         }
-    }
-
-    @Override
-    public void onDeath(DamageSource damageSource) {
-        super.onDeath(damageSource);
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
